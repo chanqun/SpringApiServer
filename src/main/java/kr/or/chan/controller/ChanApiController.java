@@ -1,62 +1,53 @@
 package kr.or.chan.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.or.chan.dto.Category;
-import kr.or.chan.dto.Product;
-import kr.or.chan.dto.Promotion;
-import kr.or.chan.service.CategoryService;
-import kr.or.chan.service.ProductService;
-import kr.or.chan.service.PromotionService;
+import kr.or.chan.category.Category;
+import kr.or.chan.category.CategoryService;
+import kr.or.chan.product.Product;
+import kr.or.chan.product.ProductService;
+import kr.or.chan.promotion.Promotion;
+import kr.or.chan.promotion.PromotionService;
 
 @RestController
 @RequestMapping(path = "/api")
 public class ChanApiController {
 	@Autowired
-	ProductService productService;
+	private ProductService productService;
 	@Autowired
-	CategoryService categoryService;
+	private CategoryService categoryService;
 	@Autowired
-	PromotionService promotionService;
+	private PromotionService promotionService;
 
 	@GetMapping(path = "/products")
-	public Map<String, Object> getProductList() {
-		List<Product> products = productService.getProducts();
-		Map<String, Object> map = new HashMap<>();
-		map.put("products", products);
-
-		return map;
+	public List<Product> getProductList(@RequestParam(name = "start", required = false, defaultValue = "0") int start,
+		@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId) {
+		if (categoryId == 0) {
+			return productService.getProducts(start);
+		} else {
+			return productService.getProductsByCategoryId(start, categoryId);
+		}
 	}
 
 	@GetMapping(path = "/products/{displayInfoId}")
-	public Product selectById(@PathVariable(name = "displayInfoId") long id) {
-		Product product = productService.getProductById(id);
-		return product;
+	public Product selectById(@PathVariable(name = "displayInfoId") int id) {
+		return productService.getProductById(id);
 	}
 
 	@GetMapping(path = "/categories")
-	public Map<String, Object> getCategoryList() {
-		List<Category> category = categoryService.getCategory();
-		Map<String, Object> map = new HashMap<>();
-		map.put("category", category);
-
-		return map;
+	public List<Category> getCategoryList() {
+		return categoryService.getCategory();
 	}
 
 	@GetMapping(path = "/promotions")
-	public Map<String, Object> getPromotionList() {
-		List<Promotion> promotion = promotionService.getPromotion();
-		Map<String, Object> map = new HashMap<>();
-		map.put("promotion", promotion);
-
-		return map;
+	public List<Promotion> getPromotionList() {
+		return promotionService.getPromotion();
 	}
 }
