@@ -205,6 +205,7 @@ function addProduct(products) {
 
     products.forEach(element => {
         let productContent = productItem
+            .replace("{detailId}", element.id)
             .replace("{id}", element.id)
             .replace("{imageId}", element.imageId)
             .replace("{description}", element.description)

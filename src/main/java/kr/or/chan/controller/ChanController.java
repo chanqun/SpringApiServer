@@ -9,4 +9,9 @@ public class ChanController {
 	public String main() {
 		return "mainpage";
 	}
+	
+	@GetMapping(path = "/detail")
+	public String detail() {
+		return "detail";
+	}
 }

@@ -11,6 +11,33 @@ public class Product {
 	private Date modifyDate;
 	private int imageId;
 	private String placeName;
+	private String tel;
+	private String placeLot;
+	private String placeStreet;
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getPlaceLot() {
+		return placeLot;
+	}
+
+	public void setPlaceLot(String placeLot) {
+		this.placeLot = placeLot;
+	}
+
+	public String getPlaceStreet() {
+		return placeStreet;
+	}
+
+	public void setPlaceStreet(String placeStreet) {
+		this.placeStreet = placeStreet;
+	}
 
 	public int getId() {
 		return id;
@@ -78,6 +105,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "ProductDao [id=" + id + ", categoryId=" + categoryId + ", description=" + description + ", content=" + content + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
+		return "Product [id=" + id + ", categoryId=" + categoryId + ", description=" + description + ", content=" + content + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", imageId=" + imageId + ", placeName=" + placeName
+			+ ", tel=" + tel + ", placeLot=" + placeLot + ", placeStreet=" + placeStreet + "]";
 	}
 }

@@ -13,6 +13,8 @@ import kr.or.chan.category.Category;
 import kr.or.chan.category.CategoryService;
 import kr.or.chan.product.Product;
 import kr.or.chan.product.ProductService;
+import kr.or.chan.productimage.ProductImage;
+import kr.or.chan.productimage.ProductImageService;
 import kr.or.chan.promotion.Promotion;
 import kr.or.chan.promotion.PromotionService;
 
@@ -25,6 +27,8 @@ public class ChanApiController {
 	private CategoryService categoryService;
 	@Autowired
 	private PromotionService promotionService;
+	@Autowired
+	private ProductImageService productImageService;
 
 	@GetMapping(path = "/products")
 	public List<Product> getProductList(@RequestParam(name = "start", required = false, defaultValue = "0") int start,
@@ -36,11 +40,6 @@ public class ChanApiController {
 		}
 	}
 
-	@GetMapping(path = "/products/{displayInfoId}")
-	public Product selectById(@PathVariable(name = "displayInfoId") int id) {
-		return productService.getProductById(id);
-	}
-
 	@GetMapping(path = "/categories")
 	public List<Category> getCategoryList() {
 		return categoryService.getCategory();
@@ -49,5 +48,15 @@ public class ChanApiController {
 	@GetMapping(path = "/promotions")
 	public List<Promotion> getPromotionList() {
 		return promotionService.getPromotion();
+	}
+
+	@GetMapping(path = "/products/{displayInfoId}")
+	public Product selectById(@PathVariable(name = "displayInfoId") int id) {
+		return productService.getProductById(id);
+	}
+
+	@GetMapping(path = "/productimage/{displayInfoId}")
+	public List<ProductImage> getProductImageList(@PathVariable(name = "displayInfoId") int productId) {
+		return productImageService.getProductImageById(productId);
 	}
 }
