@@ -109,10 +109,8 @@ function changeDetailState() {
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-
     let regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
     let results = regex.exec(location.search);
-
     if (results) {
         return decodeURIComponent(results[1].replace(/\+/g, " "));
     } else {
