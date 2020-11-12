@@ -31,7 +31,7 @@ public class ProductDao {
 		return jdbcTemplate.query(SELECT_ALL_PRODUCT, params, rowMapper);
 	}
 
-	public Product selectById(long id) {
+	public Product selectById(int id) {
 		Map<String, Object> params = Collections.singletonMap("id", id);
 		return this.jdbcTemplate.queryForObject(SELECT_PRODUCT_BY_ID, params, rowMapper);
 	}
