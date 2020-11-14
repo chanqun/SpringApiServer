@@ -1,0 +1,17 @@
+package kr.or.chan.comment;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CommentServiceImpl implements CommentService {
+	@Autowired
+	private CommentDao commentDao;
+
+	@Override
+	public List<Comment> getAllComment(int productId) {
+		return commentDao.selectAllComment(productId);
+	}
+}

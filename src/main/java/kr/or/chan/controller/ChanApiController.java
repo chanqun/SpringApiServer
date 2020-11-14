@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.or.chan.category.Category;
 import kr.or.chan.category.CategoryService;
+import kr.or.chan.comment.Comment;
+import kr.or.chan.comment.CommentService;
 import kr.or.chan.product.Product;
 import kr.or.chan.product.ProductService;
 import kr.or.chan.productimage.ProductImage;
@@ -29,6 +31,8 @@ public class ChanApiController {
 	private PromotionService promotionService;
 	@Autowired
 	private ProductImageService productImageService;
+	@Autowired
+	private CommentService commentService;
 
 	@GetMapping(path = "/products")
 	public List<Product> getProductList(@RequestParam(name = "start", required = false, defaultValue = "0") int start,
@@ -58,5 +62,10 @@ public class ChanApiController {
 	@GetMapping(path = "/productimage/{displayInfoId}")
 	public List<ProductImage> getProductImageList(@PathVariable(name = "displayInfoId") int productId) {
 		return productImageService.getProductImageById(productId);
+	}
+
+	@GetMapping(path = "/comment")
+	public List<Comment> getCommentList(@RequestParam(name = "productId", required = false, defaultValue = "0") int productId) {
+		return commentService.getAllComment(productId);
 	}
 }
