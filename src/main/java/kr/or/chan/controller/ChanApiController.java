@@ -68,4 +68,9 @@ public class ChanApiController {
 	public List<Comment> getCommentList(@RequestParam(name = "productId", required = false, defaultValue = "0") int productId) {
 		return commentService.getAllComment(productId);
 	}
+
+	@GetMapping(path = "/comment/avg")
+	public Comment getCommentTotalAverage(@RequestParam(name = "productId", required = false, defaultValue = "0") int productId) {
+		return commentService.getTotalCountAverage(productId);
+	}
 }
