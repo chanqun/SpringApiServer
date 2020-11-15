@@ -4,9 +4,27 @@ public class Comment {
 	private String description;
 	private int reservationInfoId;
 	private double score;
+	private double average;
+	private int totalCount;
 	private String comment;
 	private String reservationEmail;
 	private String reservationDate;
+
+	public double getAverage() {
+		return average;
+	}
+
+	public void setAverage(double average) {
+		this.average = average;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 
 	public String getDescription() {
 		return description;
@@ -58,6 +76,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [description=" + description + ", reservationInfoId=" + reservationInfoId + ", score=" + score + ", comment=" + comment + ", reservationEmail=" + reservationEmail + ", reservationDate=" + reservationDate + "]";
+		return "Comment [description=" + description + ", reservationInfoId=" + reservationInfoId + ", score=" + score + ", average=" + average + ", totalCount=" + totalCount + ", comment=" + comment + ", reservationEmail="
+			+ reservationEmail + ", reservationDate=" + reservationDate + "]";
 	}
 }

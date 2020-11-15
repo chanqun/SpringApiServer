@@ -14,4 +14,9 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> getAllComment(int productId) {
 		return commentDao.selectAllComment(productId);
 	}
+
+	@Override
+	public Comment getTotalCountAverage(int productId) {
+		return commentDao.getTotalCountAverage(productId);
+	}
 }

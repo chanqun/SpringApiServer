@@ -4,9 +4,38 @@ window.addEventListener("DOMContentLoaded", function() {
     product.getProductImage(productId);
     product.getProductDetail(productId);
 
+    comment.getCommentInfo(productId);
+
     bindEvent();
 })
 
+let comment = {
+    getCommentInfo(productId) {
+        let httpRequest = new XMLHttpRequest();
+
+        httpRequest.addEventListener("load", function() {
+            let commentInfo = JSON.parse(httpRequest.responseText);
+            comment.setCommentInfo(commentInfo);
+        })
+
+        httpRequest.open("GET", "./api/comment/avg?productId=" + productId, true);
+        httpRequest.send();
+    },
+
+    setCommentInfo(commentInfo) {
+        commentCountArea = document.querySelector(".join_count>em");
+        let commentCount = commentInfo.totalCount;
+        commentCountArea.innerText = commentCount + "건";
+
+        let commentAverageStar = document.querySelector(".graph_mask>em");
+        let commentAverageArea = document.querySelector(".grade_area>.text_value>span");
+        let commentAverage = commentInfo.average;
+        let commentAveragePercent = (commentAverage / 5 * 100);
+
+        commentAverageStar.style.width = commentAveragePercent + "%";
+        commentAverageArea.innerText = commentAverage;
+    }
+}
 
 function bindEvent() {
     let nextImageButton = document.querySelector(".nxt");
@@ -23,6 +52,19 @@ function bindEvent() {
 function moveImageArea(event) {
     console.log(event.target);
     console.log(event);
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+
+    let regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+    let results = regex.exec(location.search);
+
+    if (results) {
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+    } else {
+        return "";
+    }
 }
 
 let product = {
@@ -119,15 +161,3 @@ let product = {
     }
 }
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-
-    let regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-    let results = regex.exec(location.search);
-
-    if (results) {
-        return decodeURIComponent(results[1].replace(/\+/g, " "));
-    } else {
-        return "";
-    }
-}

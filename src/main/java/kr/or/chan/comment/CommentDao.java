@@ -26,4 +26,9 @@ public class CommentDao {
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
 		return jdbcTemplate.query(SELECT_ALL_COMMENT, params, rowMapper);
 	}
+
+	public Comment getTotalCountAverage(int productId) {
+		Map<String, Object> params = Collections.singletonMap("productId", productId);
+		return jdbcTemplate.queryForObject(GET_COUNT_AND_AVG_SCORE, params, rowMapper);
+	}
 }
