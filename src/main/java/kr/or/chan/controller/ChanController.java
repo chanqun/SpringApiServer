@@ -19,4 +19,14 @@ public class ChanController {
 	public String review() {
 		return "review";
 	}
+
+	@GetMapping(path = "/reserve")
+	public String reserve() {
+		return "reserve";
+	}
+
+	@GetMapping(path = "/myreservation")
+	public String myreservation() {
+		return "myreservation";
+	}
 }

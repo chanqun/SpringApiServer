@@ -22,6 +22,11 @@ public class CommentDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
+	public List<Comment> selectTopThreeComment(int productId) {
+		Map<String, Object> params = Collections.singletonMap("productId", productId);
+		return jdbcTemplate.query(SELECT_TOP_THREE_COMMENT, params, rowMapper);
+	}
+
 	public List<Comment> selectAllComment(int productId) {
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
 		return jdbcTemplate.query(SELECT_ALL_COMMENT, params, rowMapper);

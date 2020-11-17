@@ -1,5 +1,7 @@
 package kr.or.chan.comment;
 
+import java.util.Date;
+
 public class Comment {
 	private String description;
 	private int reservationInfoId;
@@ -8,7 +10,16 @@ public class Comment {
 	private int totalCount;
 	private String comment;
 	private String reservationEmail;
-	private String reservationDate;
+	private Date reservationDate;
+	private String saveFileName;
+
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
+	}
 
 	public double getAverage() {
 		return average;
@@ -66,11 +77,11 @@ public class Comment {
 		this.reservationEmail = reservationEmail;
 	}
 
-	public String getReservationDate() {
+	public Date getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(String reservationDate) {
+	public void setReservationDate(Date reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 

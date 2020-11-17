@@ -19,7 +19,7 @@ public class ProductDaoSqls {
 		+ "GROUP BY product.id "
 		+ "ORDER BY id ASC limit :start, :limit";
 	public static final String SELECT_PRODUCT_BY_ID = ""
-		+ "SELECT product.id"
+		+ "SELECT product.id product_id"
 		+ "		, category_id"
 		+ "		, description"
 		+ "		, content"
@@ -30,9 +30,13 @@ public class ProductDaoSqls {
 		+ "		, place_lot"
 		+ " 	, place_street"
 		+ "		, tel "
+		+ "		, product_image.type"
+		+ "		, product_image.id id "
 		+ "FROM product "
 		+ "JOIN display_info ON product.id = display_info.product_id "
-		+ "WHERE product.id = :id";
+		+ "JOIN product_image ON product.id = product_image.product_id "
+		+ "WHERE product.id = :id "
+		+ "AND product_image.type='th'";
 	public static final String SELECT_PRODUCT_BY_CATEGORY_ID = ""
 		+ "SELECT product.id id"
 		+ "		, category_id"

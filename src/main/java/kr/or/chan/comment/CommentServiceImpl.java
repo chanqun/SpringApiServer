@@ -11,12 +11,17 @@ public class CommentServiceImpl implements CommentService {
 	private CommentDao commentDao;
 
 	@Override
-	public List<Comment> getAllComment(int productId) {
-		return commentDao.selectAllComment(productId);
+	public List<Comment> getTopThreeComment(int productId) {
+		return commentDao.selectTopThreeComment(productId);
 	}
 
 	@Override
 	public Comment getTotalCountAverage(int productId) {
 		return commentDao.getTotalCountAverage(productId);
+	}
+
+	@Override
+	public List<Comment> getAllComment(int productId) {
+		return commentDao.selectAllComment(productId);
 	}
 }

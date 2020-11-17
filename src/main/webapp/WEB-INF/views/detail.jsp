@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,13 +14,15 @@
 		<div class="header fade">
 			<header class="header_tit">
 				<h1 class="logo">
-					<a href="./main" class="lnk_logo" title="네이버"> <span
-						class="spr_bi ico_n_logo">네이버</span>
-					</a> <a href="./main" class="lnk_logo" title="예약"> <span
-						class="spr_bi ico_bk_logo">예약</span>
+					<a href="./main" class="lnk_logo" title="네이버"> 
+					   <span class="spr_bi ico_n_logo">네이버</span>
+					</a> 
+					<a href="./main" class="lnk_logo" title="예약"> 
+					   <span class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
-				<a href="#" class="btn_my"> <span title="예약확인">예약확인</span>
+				<a href="#" class="btn_my"> 
+				    <span title="예약확인">예약확인</span>
 				</a>
 			</header>
 		</div>
@@ -44,7 +45,7 @@
 					<div class="pagination">
 						<div class="bg_pagination"></div>
 						<div class="figure_pagination">
-							<span class="num">1</span> <span class="num off">/ <span>2</span></span>
+							<span class="num">1</span> <span class="num off">/ <span>1</span></span>
 						</div>
 					</div>
 					<div class="group_visual">
@@ -108,7 +109,7 @@
 						</div>
 						<div class="event_info">
 							<div class="in_dsc">
-								[네이버예약 특별할인]<br>R석 50%, S석 60% 할인
+								[네이버예약 특별할인]<br>
 							</div>
 						</div>
 					</div>
@@ -135,6 +136,7 @@
 								</span>
 							</div>
 							<ul class="list_short_review">
+							    <li>댓글이 존재하지 않습니다.</li>
 							</ul>
 						</div>
 						<p class="guide">
@@ -142,7 +144,7 @@
 							<span>네이버 예약을 통해 실제 방문한 이용자가 남긴 평가입니다.</span>
 						</p>
 					</div>
-					<a class="btn_review_more" href="./review">
+					<a class="btn_review_more" href="./review?id=${param.id}">
 					    <span>예매자 한줄평 더보기</span> <i class="fn fn-forward1"></i>
 					</a>
 				</div>
@@ -217,48 +219,37 @@
         </li>
     </script>
 
-    <script type="rv-template" id="shortReviewWithImage">
+    <script type="rv-template" id="shortReview">
         <li class="list_item">
             <div>
+                {{#if saveFileName}}
                 <div class="review_area">
                     <div class="thumb_area">
                         <a href="#" class="thumb" title="이미지 크게 보기"> 
-                            <img width="90" height="90" class="img_vertical_top" src="http://naverbooking.phinf.naver.net/20170306_3/1488772023601A4195_JPEG/image.jpg?type=f300_300" alt="리뷰이미지">
+                            <img width="90" height="90" class="img_vertical_top" src="./{{saveFileName}}" alt="리뷰이미지">
                         </a>
                         <span class="img_count" style="display: none;">1</span>
                     </div>
-                    <h4 class="resoc_name"></h4>
-                    <p class="review">2층이어서 걱정했는데 꽤잘보여서 좋았습니다 고미오 너무 멋있었습니다 사진은 커튼콜때 찍었습니다 끝나고 퇴근길도 봐서 너무 좋았어요</p>
+                    <h4 class="resoc_name">{{description}}</h4>
+                    <p class="review">{{comment}}</p>
                 </div>
+                {{else}}
+                <div class="review_area no_img">
+                    <h4 class="resoc_name">{{description}}</h4>
+                    <p class="review">
+                        {{comment}}
+                    </p>
+                </div>
+                {{/if}}
                 <div class="info_area">
                     <div class="review_info">
-                        <span class="grade">4.0</span> <span class="name">dbfl****</span>
-                        <span class="date">2017.3.5. 방문</span>
+                        <span class="grade">{{formatScore score}}</span> <span class="name">{{reservationEmail}}</span>
+                        <span class="date">{{formatDate reservationDate}} 방문</span>
                     </div>
                 </div>
             </div>
         </li>
     </script>
-
-    <script type="rv-template" id="shortReview">
-		<li class="list_item">
-		    <div>
-		        <div class="review_area no_img">
-		            <h4 class="resoc_name"></h4>
-		            <p class="review">
-		                좋은 공연이었습니다. <br>머큐쇼역활 하신분의 열창이 기억에 남는 반면에,,, 로미오는 별로
-		                기억에 남지 않네요..
-		            </p>
-		        </div>
-		        <div class="info_area">
-		            <div class="review_info">
-		                <span class="grade">4.0</span> <span class="name">xero****</span>
-		                <span class="date">2017.3.4. 방문</span>
-		            </div>
-		        </div>
-		    </div>
-		</li>
-	</script>
 	
 	<script type="rv-template" id="detailLocation">
 		<div class="box_store_info no_topline">
@@ -307,8 +298,12 @@
 		    </div>
 		</div>
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-	<script src="./js/detail.js"></script>
+    <script src="./js/setup.js"></script>
+    <script src="./js/comment.js"></script>
+	<script src="./js/detailpage-product.js"></script>
+	<script src="./js/detailpage.js"></script>
 </body>
 </html>

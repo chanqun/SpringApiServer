@@ -5,15 +5,34 @@ import java.util.Date;
 public class Product {
 	private int id;
 	private int categoryId;
+	private int productId;
 	private String description;
 	private String content;
 	private Date createDate;
 	private Date modifyDate;
 	private int imageId;
+	private String event;
 	private String placeName;
 	private String tel;
 	private String placeLot;
 	private String placeStreet;
+	private String type;
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getTel() {
 		return tel;
@@ -101,6 +120,14 @@ public class Product {
 
 	public void setPlaceName(String placeName) {
 		this.placeName = placeName;
+	}
+
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
 	}
 
 	@Override

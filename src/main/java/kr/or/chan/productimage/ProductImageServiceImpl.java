@@ -1,8 +1,7 @@
 package kr.or.chan.productimage;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +10,11 @@ public class ProductImageServiceImpl implements ProductImageService {
 	private ProductImageDao productImageDao;
 
 	@Override
-	public List<ProductImage> getProductImageById(int productId) {
-		return productImageDao.selectAllImage(productId);
+	public ProductImage getProductImageById(int productId) {
+		try {
+			return productImageDao.selectOneImage(productId);
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
 }
