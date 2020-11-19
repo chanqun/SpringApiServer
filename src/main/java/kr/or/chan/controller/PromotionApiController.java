@@ -11,13 +11,23 @@ import kr.or.chan.promotion.Promotion;
 import kr.or.chan.promotion.PromotionService;
 
 @RestController
+<<<<<<< HEAD
 @RequestMapping("/api")
+=======
+@RequestMapping(path = "/api")
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 public class PromotionApiController {
 	@Autowired
 	private PromotionService promotionService;
 
+<<<<<<< HEAD
 	@GetMapping("/promotions")
 	public List<Promotion> getPromotionList() {
 		return promotionService.getAllPromotion();
+=======
+	@GetMapping(path = "/promotions")
+	public List<Promotion> getPromotionList() {
+		return promotionService.getPromotion();
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	}
 }

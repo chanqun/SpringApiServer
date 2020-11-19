@@ -7,6 +7,7 @@ public class Promotion {
 	private String content;
 	private String placeName;
 
+<<<<<<< HEAD
 	public int getId() {
 		return id;
 	}
@@ -23,6 +24,8 @@ public class Promotion {
 		this.productId = productId;
 	}
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	public String getDescription() {
 		return description;
 	}
@@ -47,6 +50,25 @@ public class Promotion {
 		this.placeName = placeName;
 	}
 
+<<<<<<< HEAD
+=======
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	@Override
 	public String toString() {
 		return "Promotion [id=" + id + ", productId=" + productId + ", description=" + description + ", content=" + content + ", placeName=" + placeName + "]";

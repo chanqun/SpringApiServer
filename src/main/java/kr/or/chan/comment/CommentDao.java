@@ -32,7 +32,11 @@ public class CommentDao {
 		return jdbcTemplate.query(SELECT_ALL_COMMENT, params, rowMapper);
 	}
 
+<<<<<<< HEAD
 	public Comment getTotalCountAndAverage(int productId) {
+=======
+	public Comment getTotalCountAverage(int productId) {
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
 		return jdbcTemplate.queryForObject(GET_COUNT_AND_AVG_SCORE, params, rowMapper);
 	}

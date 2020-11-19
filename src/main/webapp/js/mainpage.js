@@ -45,10 +45,13 @@ function getPromotion() {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.addEventListener("load", function() {
+<<<<<<< HEAD
         if (!error.alertRequestError(httpRequest.status)) {
             return;
         }
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         let promotions = JSON.parse(httpRequest.responseText);
         addSliding(promotions);
         setSlideShow();
@@ -111,10 +114,13 @@ function getCategoryTab() {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.addEventListener("load", function() {
+<<<<<<< HEAD
         if (!error.alertRequestError(httpRequest.status)) {
             return;
         }
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         let categories = JSON.parse(httpRequest.responseText);
         let categoryTabList = "";
         let categoryTab = document.querySelector("#categoryTabLi").innerHTML;
@@ -141,10 +147,13 @@ function getCategory(categoryEventLi) {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.addEventListener("load", function() {
+<<<<<<< HEAD
         if (!error.alertRequestError(httpRequest.status)) {
             return;
         }
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         let categories = JSON.parse(httpRequest.responseText);
         let totalCategory = 0;
         let countArea = document.querySelector(".event_lst_txt>span");
@@ -200,10 +209,13 @@ function getProduct(categoryId, start) {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.addEventListener("load", function() {
+<<<<<<< HEAD
         if (!error.alertRequestError(httpRequest.status)) {
             return;
         }
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         let products = JSON.parse(httpRequest.responseText);
         addProduct(products);
     })

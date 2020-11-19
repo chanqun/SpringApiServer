@@ -88,7 +88,11 @@
                 {{/if}}
                 <div class="info_area">
                     <div class="review_info">
+<<<<<<< HEAD
                         <span class="grade">{{formatScore score}}</span> <span class="name">{{formatEmail reservationEmail}}</span>
+=======
+                        <span class="grade">{{formatScore score}}</span> <span class="name">{{reservationEmail}}</span>
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
                         <span class="date">{{formatDate reservationDate}} 방문</span>
                     </div>
                 </div>
@@ -97,7 +101,10 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<<<<<<< HEAD
     <script src="./js/error.js"></script>
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
     <script src="./js/setup.js"></script>
     <script src="./js/comment.js"></script>
     <script src="./js/reviewpage.js"></script>

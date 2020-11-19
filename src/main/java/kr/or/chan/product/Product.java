@@ -17,6 +17,7 @@ public class Product {
 	private String placeLot;
 	private String placeStreet;
 	private String type;
+<<<<<<< HEAD
 	private String saveFileName;
 	private String saveFileImageName;
 
@@ -27,6 +28,8 @@ public class Product {
 	public void setSaveFileImageName(String saveFileImageName) {
 		this.saveFileImageName = saveFileImageName;
 	}
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 
 	public int getProductId() {
 		return productId;
@@ -140,6 +143,7 @@ public class Product {
 		this.event = event;
 	}
 
+<<<<<<< HEAD
 	public String getSaveFileName() {
 		return saveFileName;
 	}
@@ -148,6 +152,8 @@ public class Product {
 		this.saveFileName = saveFileName;
 	}
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", categoryId=" + categoryId + ", description=" + description + ", content=" + content + ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", imageId=" + imageId + ", placeName=" + placeName

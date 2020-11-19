@@ -47,15 +47,24 @@ function moveImageArea(event) {
 
         if (moveImageButton.classList.contains("prev_inn")) {
             product.productImageIndex--;
+<<<<<<< HEAD
             changeImageIndex();
         } else if (moveImageButton.classList.contains("nxt_inn")) {
             product.productImageIndex++;
             changeImageIndex();
+=======
+        } else if (moveImageButton.classList.contains("nxt_inn")) {
+            product.productImageIndex++;
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         }
 
         productImageArea.style.transform = "translate(" + product.productImageIndex * -100 + "%, 0)";
     }, 10);
 
+<<<<<<< HEAD
+=======
+    changeImageIndex();
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 }
 
 function toggleInfoTab(event) {
@@ -109,7 +118,11 @@ function changeImageIndex() {
     let imageIndex = document.querySelector(".figure_pagination>.num");
     let prevButton = document.querySelector(".prev_inn>a>i");
 
+<<<<<<< HEAD
     if (imageIndex.innerText == 1) {
+=======
+    if (imageIndex.innerText == 1)  {
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         imageIndex.innerText = 2;
         prevButton.classList.remove("off");
     } else if (imageIndex.innerText == 2) {

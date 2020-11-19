@@ -138,7 +138,10 @@
         </li>
     </script>
 
+<<<<<<< HEAD
     <script src="./js/error.js"></script>
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
     <script src="./js/mainpage.js"></script>
 </body>
 </html>

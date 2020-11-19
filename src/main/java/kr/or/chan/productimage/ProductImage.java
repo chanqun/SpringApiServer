@@ -6,7 +6,18 @@ public class ProductImage {
 	private String type;
 	private int fileId;
 	private String description;
+<<<<<<< HEAD
 	private String saveFileImageName;
+=======
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 
 	public int getId() {
 		return id;
@@ -40,6 +51,7 @@ public class ProductImage {
 		this.fileId = fileId;
 	}
 
+<<<<<<< HEAD
 	public String getDescription() {
 		return description;
 	}
@@ -56,6 +68,8 @@ public class ProductImage {
 		this.saveFileImageName = saveFileImageName;
 	}
 
+=======
+>>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	@Override
 	public String toString() {
 		return "ProductImage [id=" + id + ", productId=" + productId + ", type=" + type + ", fileId=" + fileId + "]";
