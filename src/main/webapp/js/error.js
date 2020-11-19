@@ -1,6 +1,5 @@
 let error = {
     errorCount: 0,
-
     alertRequestError(requestStatus) {
         if (requestStatus === 200) {
             return true;
