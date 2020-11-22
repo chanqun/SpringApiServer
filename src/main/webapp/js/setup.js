@@ -5,10 +5,7 @@ function getParameterByName(name) {
     query.split("&").forEach(function(part) {
         let item = part.split("=");
         result[item[0]] = decodeURIComponent(item[1]);
-<<<<<<< HEAD
 
-=======
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         if (item[0] === name) {
             result += decodeURIComponent(item[1]);
         }
@@ -23,11 +20,8 @@ Handlebars.registerHelper("formatScore", function(score) {
 
 Handlebars.registerHelper("formatDate", function(date) {
     return moment(date).format("YYYY.MM.DD.");
-<<<<<<< HEAD
 });
 
 Handlebars.registerHelper("formatEmail", function(email) {
     return email + "****";
-=======
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 });

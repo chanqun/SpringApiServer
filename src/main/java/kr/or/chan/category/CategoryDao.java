@@ -20,11 +20,7 @@ public class CategoryDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-<<<<<<< HEAD
 	public List<Category> selectAllCategory() {
-=======
-	public List<Category> selectAll() {
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 		return jdbcTemplate.query(SELECT_CATEGORIES, rowMapper);
 	}
 }

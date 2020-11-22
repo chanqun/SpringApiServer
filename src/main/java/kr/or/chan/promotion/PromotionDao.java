@@ -20,11 +20,7 @@ public class PromotionDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-<<<<<<< HEAD
 	public List<Promotion> selectAllPromotion() {
-=======
-	public List<Promotion> selectAll() {
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 		return jdbcTemplate.query(SELECT_PROMOTION_IMAGE, rowMapper);
 	}
 }

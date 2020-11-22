@@ -3,13 +3,10 @@ let comment = {
         let httpRequest = new XMLHttpRequest();
 
         httpRequest.addEventListener("load", function() {
-<<<<<<< HEAD
             if (!error.alertRequestError(httpRequest.status)) {
                 return;
             }
 
-=======
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
             let comments = JSON.parse(httpRequest.responseText);
             comment.showComment(comments);
         })
@@ -43,13 +40,10 @@ let comment = {
         let httpRequest = new XMLHttpRequest();
 
         httpRequest.addEventListener("load", function() {
-<<<<<<< HEAD
             if (!error.alertRequestError(httpRequest.status)) {
                 return;
             }
 
-=======
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
             let commentInfo = JSON.parse(httpRequest.responseText);
             comment.showCommentInfo(commentInfo);
         })

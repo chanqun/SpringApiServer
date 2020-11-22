@@ -21,11 +21,7 @@ public class ProductImageDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-<<<<<<< HEAD
 	public ProductImage selectProductImageById(int productId) {
-=======
-	public ProductImage selectOneImage(int productId) {
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
 		return jdbcTemplate.queryForObject(SELECT_ONE_IMAGE_BY_ID, params, rowMapper);
 	}

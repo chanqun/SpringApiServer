@@ -12,11 +12,7 @@ public class ProductImageServiceImpl implements ProductImageService {
 	@Override
 	public ProductImage getProductImageById(int productId) {
 		try {
-<<<<<<< HEAD
 			return productImageDao.selectProductImageById(productId);
-=======
-			return productImageDao.selectOneImage(productId);
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}

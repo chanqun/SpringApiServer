@@ -5,13 +5,10 @@ let product = {
         let httpRequest = new XMLHttpRequest();
 
         httpRequest.addEventListener("load", function() {
-<<<<<<< HEAD
             if (!error.alertRequestError(httpRequest.status)) {
                 return;
             }
 
-=======
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
             let productImage = {};
             if (httpRequest.responseText) {
                 productImage = JSON.parse(httpRequest.responseText);
@@ -28,11 +25,7 @@ let product = {
             deleteMovingButton();
             return;
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
         changeImageTotalCount();
 
         let firstImage = document.querySelector(".visual_img").innerHTML;
@@ -53,13 +46,10 @@ let product = {
         let httpRequest = new XMLHttpRequest();
 
         httpRequest.addEventListener("load", function() {
-<<<<<<< HEAD
             if (!error.alertRequestError(httpRequest.status)) {
                 return;
             }
 
-=======
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
             let productDetail = JSON.parse(httpRequest.responseText);
             product.showProductDetail(productDetail);
             product.showProductEvent(productDetail);

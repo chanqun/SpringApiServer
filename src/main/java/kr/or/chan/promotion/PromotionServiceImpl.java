@@ -11,12 +11,7 @@ public class PromotionServiceImpl implements PromotionService {
 	private PromotionDao promotionDao;
 
 	@Override
-<<<<<<< HEAD
 	public List<Promotion> getAllPromotion() {
 		return promotionDao.selectAllPromotion();
-=======
-	public List<Promotion> getPromotion() {
-		return promotionDao.selectAll();
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	}
 }

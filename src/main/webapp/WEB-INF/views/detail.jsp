@@ -208,20 +208,6 @@
 	</footer>
 	<div id="photoviwer"></div>
 
-<<<<<<< HEAD
-=======
-	<script type="rv-template" id="visualImageList">
-        <li class="item" style="width: 414px;"> <img alt="상품이미지" class="img_thumb" src="./img/{{productId}}_{{type}}_{{id}}.png"> <span class="img_bg"></span>
-            <div class="visual_txt">
-                <div class="visual_txt_inn">
-                    <h2 class="visual_txt_tit"> <span>{{description}}</span> </h2>
-                    <p class="visual_txt_dsc"></p>
-                </div>
-            </div>
-        </li>
-    </script>
-
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
     <script type="rv-template" id="shortReview">
         <li class="list_item">
             <div>
@@ -246,30 +232,18 @@
                 {{/if}}
                 <div class="info_area">
                     <div class="review_info">
-<<<<<<< HEAD
                         <span class="grade">{{formatScore score}}</span> <span class="name">{{formatEmail reservationEmail}}</span>
-=======
-                        <span class="grade">{{formatScore score}}</span> <span class="name">{{reservationEmail}}</span>
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
                         <span class="date">{{formatDate reservationDate}} 방문</span>
                     </div>
                 </div>
             </div>
         </li>
     </script>
-<<<<<<< HEAD
 
 	<script type="rv-template" id="detailLocation">
 		<div class="box_store_info no_topline">
 		    <a href="#" class="store_location" title="지도웹으로 연결"> 
 		        <img class="store_map img_thumb" alt="map" src="./{{saveFileName}}">
-=======
-	
-	<script type="rv-template" id="detailLocation">
-		<div class="box_store_info no_topline">
-		    <a href="#" class="store_location" title="지도웹으로 연결"> 
-		        <img class="store_map img_thumb" alt="map" src="./img_map/{{id}}_map_{{id}}.png">
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 		        <span class="img_border"></span> 
 		        <span class="btn_map">
 		            <i class="spr_book2 ico_mapview"></i>
@@ -313,7 +287,6 @@
 		    </div>
 		</div>
     </script>
-<<<<<<< HEAD
 
     <script type="rv-template" id="visualImageList">
         <li class="item" style="width: 414px;"> <img alt="상품이미지" class="img_thumb" src="./img/{{productId}}_{{type}}_{{id}}.png"> <span class="img_bg"></span>
@@ -329,11 +302,6 @@
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="./js/error.js"></script>
-=======
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
     <script src="./js/setup.js"></script>
     <script src="./js/comment.js"></script>
 	<script src="./js/detailpage-product.js"></script>

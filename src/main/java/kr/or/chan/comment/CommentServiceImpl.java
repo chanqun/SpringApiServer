@@ -11,7 +11,6 @@ public class CommentServiceImpl implements CommentService {
 	private CommentDao commentDao;
 
 	@Override
-<<<<<<< HEAD
 	public List<Comment> getAllComment(int productId) {
 		return commentDao.selectAllComment(productId);
 	}
@@ -24,19 +23,5 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public Comment getTotalCountAndAverage(int productId) {
 		return commentDao.getTotalCountAndAverage(productId);
-=======
-	public List<Comment> getTopThreeComment(int productId) {
-		return commentDao.selectTopThreeComment(productId);
-	}
-
-	@Override
-	public Comment getTotalCountAverage(int productId) {
-		return commentDao.getTotalCountAverage(productId);
-	}
-
-	@Override
-	public List<Comment> getAllComment(int productId) {
-		return commentDao.selectAllComment(productId);
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 	}
 }

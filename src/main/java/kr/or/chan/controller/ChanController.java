@@ -2,59 +2,38 @@ package kr.or.chan.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/")
 public class ChanController {
-<<<<<<< HEAD
-	@GetMapping("/main")
-=======
-	@GetMapping(path = "/main")
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
+	@GetMapping("main")
 	public String main() {
 		return "mainpage";
 	}
 
-<<<<<<< HEAD
-	@GetMapping("/detail")
-=======
-	@GetMapping(path = "/detail")
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
+	@GetMapping("detail")
 	public String detail() {
 		return "detail";
 	}
 
-<<<<<<< HEAD
-	@GetMapping("/review")
-=======
-	@GetMapping(path = "/review")
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
+	@GetMapping("review")
 	public String review() {
 		return "review";
 	}
 
-<<<<<<< HEAD
-	@GetMapping("/reserve")
-=======
-	@GetMapping(path = "/reserve")
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
+	@GetMapping("reserve")
 	public String reserve() {
 		return "reserve";
 	}
 
-<<<<<<< HEAD
-	@GetMapping("/myreservation")
+	@GetMapping("myreservation")
 	public String myreservation() {
 		return "myreservation";
 	}
 
-	@GetMapping("/error")
+	@GetMapping("error")
 	public String error() {
 		return "error";
 	}
-=======
-	@GetMapping(path = "/myreservation")
-	public String myreservation() {
-		return "myreservation";
-	}
->>>>>>> bfd249f7d67ddcebe5c4caeb50018da9619fee7e
 }
