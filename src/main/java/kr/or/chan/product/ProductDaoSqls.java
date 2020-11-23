@@ -60,4 +60,17 @@ public class ProductDaoSqls {
 		+ "GROUP BY product.id "
 		+ "ORDER BY id ASC "
 		+ "LIMIT :start, :limit";
+
+	public static final String SELECT_PRODUCT_BY_DISPLAYINFO_ID = ""
+		+ "SELECT product.id"
+		+ "		, product.description"
+		+ "		, display_info.place_name"
+		+ "		, display_info.opening_hours"
+		+ "		, file_info.save_file_name "
+		+ "FROM product "
+		+ "JOIN display_info ON product.id = display_info.product_id "
+		+ "JOIN product_image ON product.id = product_image.product_id "
+		+ "JOIN file_info ON file_info.id = product_image.file_id "
+		+ "WHERE display_info.id = :displayInfoId "
+		+ "AND product_image.type = 'ma'";
 }

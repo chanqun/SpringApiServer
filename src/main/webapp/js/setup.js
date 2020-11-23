@@ -25,3 +25,24 @@ Handlebars.registerHelper("formatDate", function(date) {
 Handlebars.registerHelper("formatEmail", function(email) {
     return email + "****";
 });
+
+Handlebars.registerHelper("formatTicket", function(ticket) {
+    switch (ticket) {
+        case "A":
+            return "성인 (만 19~64세)";
+        case "B":
+            return "유아 (만 4~12세)";
+        case "Y":
+            return "청소년 (만 13~18세)";
+        case "S":
+            return "20인 이상 단체";
+        case "D":
+            return "장애인";
+        case "E":
+            return "얼리버드";
+        case "V":
+            return "VIP";
+    }
+
+    return ticket + "석";
+});

@@ -304,7 +304,7 @@
     <script src="./js/error.js"></script>
     <script src="./js/setup.js"></script>
     <script src="./js/comment.js"></script>
-	<script src="./js/detailpage-product.js"></script>
+	<script src="./js/detailpageProduct.js"></script>
 	<script src="./js/detailpage.js"></script>
 </body>
 </html>
