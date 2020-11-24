@@ -2,10 +2,27 @@ package kr.or.chan.product;
 
 import java.util.List;
 
-public interface ProductService {
-	Product getProductById(int id);
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	List<Product> getAllProduct(int start);
+@Service
+public class ProductService {
+	@Autowired
+	private ProductDao productDao;
 
-	List<Product> getProductsByCategoryId(int start, int categoryId);
+	public Product getProductById(int id) {
+		return productDao.selectProductById(id);
+	}
+
+	public List<Product> getAllProduct(int start) {
+		return productDao.selectAllProduct(start);
+	}
+
+	public List<Product> getProductsByCategoryId(int start, int categoryId) {
+		return productDao.selectProductByCategoryId(start, categoryId);
+	}
+
+	public Product getProductDisplayInfoById(int displayInfoId) {
+		return productDao.selectProductDisplayInfoById(displayInfoId);
+	}
 }

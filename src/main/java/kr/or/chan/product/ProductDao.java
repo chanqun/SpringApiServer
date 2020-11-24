@@ -44,4 +44,9 @@ public class ProductDao {
 
 		return jdbcTemplate.query(SELECT_PRODUCT_BY_CATEGORY_ID, params, rowMapper);
 	}
+
+	public Product selectProductDisplayInfoById(int displayInfoId) {
+		Map<String, Object> params = Collections.singletonMap("displayInfoId", displayInfoId);
+		return this.jdbcTemplate.queryForObject(SELECT_PRODUCT_BY_DISPLAYINFO_ID, params, rowMapper);
+	}
 }

@@ -17,6 +17,7 @@ public class Product {
 	private String placeLot;
 	private String placeStreet;
 	private String type;
+	private String openingHours;
 	private String saveFileName;
 	private String saveFileImageName;
 
@@ -146,6 +147,14 @@ public class Product {
 
 	public void setSaveFileName(String saveFileName) {
 		this.saveFileName = saveFileName;
+	}
+
+	public String getOpeningHours() {
+		return openingHours;
+	}
+
+	public void setOpeningHours(String openingHours) {
+		this.openingHours = openingHours;
 	}
 
 	@Override

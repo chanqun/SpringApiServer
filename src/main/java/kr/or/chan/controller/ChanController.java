@@ -31,9 +31,4 @@ public class ChanController {
 	public String myreservation() {
 		return "myreservation";
 	}
-
-	@GetMapping("error")
-	public String error() {
-		return "error";
-	}
 }

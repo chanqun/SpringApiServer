@@ -13,6 +13,8 @@ import kr.or.chan.product.Product;
 import kr.or.chan.product.ProductService;
 import kr.or.chan.productimage.ProductImage;
 import kr.or.chan.productimage.ProductImageService;
+import kr.or.chan.productprice.ProductPrice;
+import kr.or.chan.productprice.ProductPriceService;
 
 @RestController
 @RequestMapping("/api")
@@ -21,6 +23,8 @@ public class ProductApiController {
 	private ProductService productService;
 	@Autowired
 	private ProductImageService productImageService;
+	@Autowired
+	private ProductPriceService productPriceService;
 
 	@GetMapping("/products")
 	public List<Product> getProductList(@RequestParam(name = "start", required = false, defaultValue = "0") int start,
@@ -32,13 +36,23 @@ public class ProductApiController {
 		}
 	}
 
-	@GetMapping("/products/{displayInfoId}")
-	public Product selectProductById(@PathVariable("displayInfoId") int id) {
+	@GetMapping("/products/{id}")
+	public Product selectProductById(@PathVariable("id") int id) {
 		return productService.getProductById(id);
 	}
 
 	@GetMapping("/productimage/{displayInfoId}")
 	public ProductImage getProductImage(@PathVariable("displayInfoId") int productId) {
 		return productImageService.getProductImageById(productId);
+	}
+
+	@GetMapping("/displayinfo/{displayInfoId}")
+	public Product selectProductDisplayInfoById(@PathVariable("displayInfoId") int displayInfoId) {
+		return productService.getProductDisplayInfoById(displayInfoId);
+	}
+
+	@GetMapping("/productprice/{productId}")
+	public List<ProductPrice> selectProductPriceById(@PathVariable("productId") int productId) {
+		return productPriceService.getProductPriceById(productId);
 	}
 }
