@@ -37,22 +37,22 @@ public class ProductApiController {
 	}
 
 	@GetMapping("/products/{id}")
-	public Product selectProductById(@PathVariable("id") int id) {
+	public Product selectProductById(@PathVariable int id) {
 		return productService.getProductById(id);
 	}
 
-	@GetMapping("/productimage/{displayInfoId}")
-	public ProductImage getProductImage(@PathVariable("displayInfoId") int productId) {
+	@GetMapping("/productimage/{productId}")
+	public ProductImage getProductImage(@PathVariable int productId) {
 		return productImageService.getProductImageById(productId);
 	}
 
-	@GetMapping("/displayinfo/{displayInfoId}")
-	public Product selectProductDisplayInfoById(@PathVariable("displayInfoId") int displayInfoId) {
-		return productService.getProductDisplayInfoById(displayInfoId);
+	@GetMapping("/productprice/{productId}")
+	public List<ProductPrice> selectProductPriceById(@PathVariable int productId) {
+		return productPriceService.getProductPriceById(productId);
 	}
 
-	@GetMapping("/productprice/{productId}")
-	public List<ProductPrice> selectProductPriceById(@PathVariable("productId") int productId) {
-		return productPriceService.getProductPriceById(productId);
+	@GetMapping("/displayinfo/{displayInfoId}")
+	public Product selectProductDisplayInfoById(@PathVariable int displayInfoId) {
+		return productService.getProductDisplayInfoById(displayInfoId);
 	}
 }

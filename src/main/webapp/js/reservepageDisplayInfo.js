@@ -10,7 +10,7 @@ let displayInfo = {
             let displayInformation = JSON.parse(httpRequest.responseText);
             displayInfo.showDisplayImage(displayInformation);
             displayInfo.showDisplayInfo(displayInformation);
-            
+
             displayInfo.requestProductPrice(productId);
         })
 
@@ -30,6 +30,9 @@ let displayInfo = {
     },
 
     showDisplayInfo(displayInformation) {
+        let topTitleArea = document.querySelector(".title");
+        topTitleArea.innerText = displayInformation.description;
+
         let displayInfoArea = document.querySelector(".store_details");
         let displayInfoTemplate = document.querySelector("#displayInfoDetail").innerText;
         let bindTemplate = Handlebars.compile(displayInfoTemplate);
@@ -63,7 +66,7 @@ let displayInfo = {
         let bindTemplate = Handlebars.compile(displayPriceTemplate);
         let displayPriceInfo = "";
 
-        productPrice.forEach(element=>{
+        productPrice.forEach(element => {
             displayPriceInfo += bindTemplate(element);
         })
 
