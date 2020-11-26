@@ -41,7 +41,7 @@ public class ProductDaoSqls {
 		+ "JOIN product_image ON product.id = product_image.product_id "
 		+ "LEFT JOIN file_info ON file_info.id = display_info_image.file_id "
 		+ "WHERE product.id = :id "
-		+ "AND product_image.type='th'";
+		+ "AND product_image.type='th' LIMIT 1 ";
 
 	public static final String SELECT_PRODUCT_BY_CATEGORY_ID = ""
 		+ "SELECT product.id id"
@@ -62,7 +62,8 @@ public class ProductDaoSqls {
 		+ "LIMIT :start, :limit";
 
 	public static final String SELECT_PRODUCT_BY_DISPLAYINFO_ID = ""
-		+ "SELECT product.id"
+		+ "SELECT display_info.id"
+		+ "		, product.id product_id"
 		+ "		, product.description"
 		+ "		, display_info.place_name"
 		+ "		, display_info.opening_hours"

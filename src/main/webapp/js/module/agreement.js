@@ -10,12 +10,14 @@ export default function Agreement(agreementBtnList, agreementInput, activateRese
 Agreement.prototype = {
     registerEvent() {
         this.agreementBtnList.forEach((element) => {
-            element.addEventListener('click', (event) => {
+            element.addEventListener("click", (event) => {
                 this.toggleAgreement(event);
             })
         })
-        this.agreementInput.addEventListener('click', function() {
+
+        this.agreementInput.addEventListener("click", () => {
             this.inputValue = !this.inputValue;
+            this.activateReserveButton();
         })
     },
 

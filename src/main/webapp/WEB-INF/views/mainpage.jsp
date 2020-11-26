@@ -20,7 +20,7 @@
 					   <span class="spr_bi ico_bk_logo">예약</span>
 					</a>
 				</h1>
-				<a class="btn_my">
+				<a href="./myreservation" class="btn_my">
 				    <span class="viewReservation" title="예약확인">예약확인</span>
 				</a>
 			</header>

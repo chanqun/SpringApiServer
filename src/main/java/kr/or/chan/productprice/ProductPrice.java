@@ -1,9 +1,18 @@
 package kr.or.chan.productprice;
 
 public class ProductPrice {
+	private int id;
 	private String priceTypeName;
 	private int price;
 	private double discountRate;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getPriceTypeName() {
 		return priceTypeName;

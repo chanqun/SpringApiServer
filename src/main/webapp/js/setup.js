@@ -26,6 +26,10 @@ Handlebars.registerHelper("formatEmail", function(email) {
     return email + "****";
 });
 
+Handlebars.registerHelper("formatTicketPrice", function(ticketPrice) {
+    return ticketPrice.toLocaleString();
+});
+
 Handlebars.registerHelper("formatTicket", function(ticket) {
     switch (ticket) {
         case "A":

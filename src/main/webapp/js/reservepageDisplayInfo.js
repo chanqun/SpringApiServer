@@ -30,6 +30,10 @@ let displayInfo = {
     },
 
     showDisplayInfo(displayInformation) {
+        let bookButton = document.querySelector(".bk_btn_wrap");
+        bookButton.dataset.productId = displayInformation.productId;
+        bookButton.dataset.displayInfoId = displayInformation.id;
+
         let topTitleArea = document.querySelector(".title");
         topTitleArea.innerText = displayInformation.description;
 
