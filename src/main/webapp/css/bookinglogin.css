@@ -7,6 +7,10 @@
 	font-style: normal
 }
 
+.warning_msg {
+	display : none;
+}
+
 .fn-booking {
 	display: inline-block;
 	height: 1em;

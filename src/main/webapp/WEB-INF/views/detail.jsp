@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,7 +23,10 @@
 					</a>
 				</h1>
 				<a href="#" class="btn_my"> 
-				    <span title="예약확인">예약확인</span>
+				    <span title="예약확인">
+				    <c:if test="${empty sessionScope.email}">예약확인</c:if>
+                    <c:if test="${!empty sessionScope.email}">${sessionScope.email}</c:if>
+				    </span>
 				</a>
 			</header>
 		</div>
@@ -39,7 +43,10 @@
 							</a>
 						</h1>
 						<a href="./myreservation" class="btn_my"> 
-						    <span class="viewReservation" title="예약확인">예약확인</span>
+						    <span class="viewReservation" title="예약확인">
+			                    <c:if test="${empty sessionScope.email}">예약확인</c:if>
+			                    <c:if test="${!empty sessionScope.email}">${sessionScope.email}</c:if>
+						    </span>
 						</a>
 					</header>
 					<div class="pagination">

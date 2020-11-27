@@ -1,6 +1,10 @@
 package kr.or.chan.reservation;
 
+import static kr.or.chan.reservation.ReservationDaoSqls.*;
+
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -16,8 +20,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ReservationDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
-	private RowMapper<ReservationInfo> reservationInfoRowMapper = BeanPropertyRowMapper.newInstance(ReservationInfo.class);
-	private RowMapper<ReservationInfoPrice> reservationInfoPriceRowMapper = BeanPropertyRowMapper.newInstance(ReservationInfoPrice.class);
+	private RowMapper<ReservationResponse> reservationResponseRowMapper = BeanPropertyRowMapper.newInstance(ReservationResponse.class);
 	private SimpleJdbcInsert reservationInfoInsertAction;
 	private SimpleJdbcInsert reservationInfoPriceInsertAction;
 
@@ -45,5 +48,10 @@ public class ReservationDao {
 	public int insertReservationPrice(ReservationInfoPrice reservationInfoPrice) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(reservationInfoPrice);
 		return reservationInfoPriceInsertAction.executeAndReturnKey(params).intValue();
+	}
+
+	public List<ReservationResponse> selectReservationInfoByEmail(String reservationEmail) {
+		Map<String, Object> params = Collections.singletonMap("reservationEmail", reservationEmail);
+		return jdbcTemplate.query(SELECT_RESERVATION_INFO_BY_EMAIL, params, reservationResponseRowMapper);
 	}
 }
