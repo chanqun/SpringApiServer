@@ -15,6 +15,7 @@ import kr.or.chan.reservation.ReservationResponse;
 import kr.or.chan.reservation.ReservationService;
 
 @Controller
+@RequestMapping("/")
 public class ChanController {
 	@Autowired
 	private ReservationService reservationService;

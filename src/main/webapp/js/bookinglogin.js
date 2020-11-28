@@ -4,7 +4,6 @@ window.addEventListener("DOMContentLoaded", function() {
     const email = new Email(emailElement, warningElement);
 
     const loginButton = document.querySelector(".login_btn");
-
     loginButton.addEventListener("click", function() {
         if (!email.validateEmail()) {
             alert("이메일을 확인해주세요");
@@ -20,7 +19,7 @@ Email.prototype = {
     registerEvent() {
         this.emailElement.addEventListener("input", (event) => {
             this.inputValue = event.target.value;
-
+            console.log(this.inputValue);
             if (this.validateEmail()) {
                 this.warningElement.style.display = "none";
             } else {

@@ -13,7 +13,7 @@ public class ReservationService {
 	private ReservationDao reservationDao;
 
 	@Transactional
-	public void createReservation(ReservationParameter reservationParameter) {
+	public boolean createReservation(ReservationParameter reservationParameter) {
 		ReservationInfo reservationInfo = new ReservationInfo(reservationParameter.getProductId(), reservationParameter.getDisplayInfoId(), reservationParameter.getReservationName(), reservationParameter.getReservationTel(),
 			reservationParameter.getReservationEmail(), 0, new Date());
 
@@ -21,8 +21,11 @@ public class ReservationService {
 
 		for (ReservationInfoPrice reservationInfoPrice : reservationParameter.getPrice()) {
 			reservationInfoPrice.setReservationInfoId(reservationInfoKey);
-			reservationDao.insertReservationPrice(reservationInfoPrice);
+			Integer reservationPriceKey = reservationDao.insertReservationPrice(reservationInfoPrice);
+			reservationInfoPrice.setReservationInfoId(reservationPriceKey);
 		}
+
+		return true;
 	}
 
 	public List<ReservationResponse> getAllReservationByEmail(String reservationEmail) {
