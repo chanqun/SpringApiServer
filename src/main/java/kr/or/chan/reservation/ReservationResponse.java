@@ -15,6 +15,9 @@ public class ReservationResponse {
 	private String reservationTel;
 	private String createDate;
 	private String modifyDate;
+	private String description;
+	private String placeName;
+	private int totalPrice;
 
 	public ReservationResponse() {
 
@@ -121,6 +124,30 @@ public class ReservationResponse {
 
 	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getPlaceName() {
+		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	@Override
