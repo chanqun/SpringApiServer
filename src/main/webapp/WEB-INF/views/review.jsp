@@ -54,16 +54,7 @@
         </div>
         <hr> 
     </div>
-	<footer>
-	    <div class="gototop">
-	        <a href="#" class="lnk_top"> <span class="lnk_top_text">TOP</span> </a>
-	    </div>
-	    <div id="footer" class="footer">
-	        <p class="dsc_footer">네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및 환불 등과 관련한 의무와 책임은 각 회원에게 있습니다.</p>
-	        <span class="copyright">© NAVER Corp.</span>
-	    </div>
-	</footer>
-
+    <jsp:include page="footer.jsp"/>
     <script type="rv-template" id="shortReview">
         <li class="list_item">
             <div>
@@ -97,9 +88,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="./js/error.js"></script>
-    <script src="./js/setup.js"></script>
-    <script src="./js/comment.js"></script>
+    <script src="./js/module/error.js"></script>
+    <script src="./js/module/setup.js"></script>
+    <script src="./js/module/comment.js"></script>
     <script src="./js/reviewpage.js"></script>
 </body>
 </html>

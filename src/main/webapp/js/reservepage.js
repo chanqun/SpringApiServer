@@ -4,9 +4,10 @@ import Email from "./module/email.js";
 import Ticket from "./module/ticket.js";
 
 window.addEventListener("DOMContentLoaded", function() {
-    const productId = getParameterByName("id");
+    const displayInfoId = getParameterByName("display");
+    const productId = getParameterByName("display");
 
-    displayInfo.requestDispalyInfo(productId);
+    displayInfo.requestDispalyInfo(displayInfoId, productId);
 
     const telElement = document.querySelector("#tel");
     const telWarningElement = telElement.parentElement.parentElement.querySelector(".inline_form .warning_msg");
@@ -28,13 +29,20 @@ window.addEventListener("DOMContentLoaded", function() {
         activateReserveButton();
     })
 
-    setTimeout(() => {
+    let addTicketButtonEventTimer = setTimeout(function addTicketEvent() {
         document.querySelectorAll(".qty").forEach(element => {
             const plusButton = element.querySelector(".ico_plus3");
             const minusButton = element.querySelector(".ico_minus3");
             const ticket = new Ticket(element, plusButton, minusButton, activateReserveButton);
         });
-    }, 2000);
+
+        if (document.querySelectorAll(".qty").length != 0) {
+            clearTimeout(addTicketButtonEventTimer)
+            return;
+        }
+
+        addTicketButtonEventTimer = setTimeout(addTicketEvent, 200);
+    }, 0);
 
     function reserveTicket() {
         if (bookButton.classList.contains("disable")) {
@@ -42,7 +50,6 @@ window.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        const displayInfoId = bookButton.dataset.displayInfoId;
         const ticketPrice = document.querySelectorAll('.qty');
         const price = [];
         ticketPrice.forEach((element) => {
@@ -55,17 +62,14 @@ window.addEventListener("DOMContentLoaded", function() {
                 })
             }
         })
-        const name = document.querySelector('#name').value;
-        const email = document.querySelector('#email').value;
-        const tel = document.querySelector('#tel').value;
 
         const requestBody = {
-            displayInfoId: parseInt(displayInfoId),
+            displayInfoId: parseInt(bookButton.dataset.displayInfoId),
             price: price,
             productId: parseInt(bookButton.dataset.productId),
-            reservationEmail: email,
-            reservationName: name,
-            reservationTel: tel,
+            reservationEmail: document.querySelector('#email').value,
+            reservationName: document.querySelector('#name').value,
+            reservationTel: document.querySelector('#tel').value
         }
 
         const httpRequest = new XMLHttpRequest();
@@ -80,7 +84,7 @@ window.addEventListener("DOMContentLoaded", function() {
             }
 
             alert("예약이 완료되었습니다.");
-            location.href = "./detail?id=" + displayInfoId;
+            location.href = "./main";
         })
     }
 

@@ -1,6 +1,5 @@
 package kr.or.chan.reservation;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,11 @@ public class ReservationService {
 	private ReservationDao reservationDao;
 
 	@Transactional
-	public boolean createReservation(ReservationParameter reservationParameter) {
-		ReservationInfo reservationInfo = new ReservationInfo(reservationParameter.getProductId(), reservationParameter.getDisplayInfoId(), reservationParameter.getReservationName(), reservationParameter.getReservationTel(),
-			reservationParameter.getReservationEmail(), 0, new Date());
+	public void createReservation(ReservationParameter reservationParameter) {
+		ReservationInfo reservationInfo = new ReservationInfo(reservationParameter);
+
+		int randomPlusDay = (int)((Math.random() * 4) + 1);
+		reservationInfo.setReservationDate(reservationInfo.getReservationDate().plusDays(randomPlusDay));
 
 		int reservationInfoKey = reservationDao.insertReservationInfo(reservationInfo);
 
@@ -24,11 +25,13 @@ public class ReservationService {
 			Integer reservationPriceKey = reservationDao.insertReservationPrice(reservationInfoPrice);
 			reservationInfoPrice.setReservationInfoId(reservationPriceKey);
 		}
-
-		return true;
 	}
 
 	public List<ReservationResponse> getAllReservationByEmail(String reservationEmail) {
 		return reservationDao.selectReservationInfoByEmail(reservationEmail);
+	}
+
+	public void cancelReservationByReservationInfoId(int reservationInfoId) {
+		reservationDao.updateReservationByReservationInfoId(reservationInfoId);
 	}
 }

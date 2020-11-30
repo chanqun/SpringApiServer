@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="javatime" uri="http://sargue.net/jsptags/time"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,18 +13,12 @@
     <div id="container">
         <!-- [D] 예약하기로 들어오면 header에 fade 클래스 추가로 숨김 -->
         <div class="header fade">
-            <header class="header_tit">
-                <h1 class="logo">
-                    <a href="./mainpage" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
-                    <a href="./mainpage" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
-                </h1>
-                <a href="#" class="btn_my"> <span title="예약확인">예약확인</span> </a>
-            </header>
+            <jsp:include page="header.jsp"/>
         </div>
         <div class="ct">
             <div class="ct_wrap">
                 <div class="top_title">
-                    <a href="./detail?id=${param.id}" class="btn_back" title="이전 화면으로 이동"> <i class="fn fn-backward1"></i> </a>
+                    <a href="./detail?id=${param.id}&display=${param.display}" class="btn_back" title="이전 화면으로 이동"> <i class="fn fn-backward1"></i> </a>
                     <h2><span class="title"></span></h2>
                 </div>
                 <div class="group_visual">
@@ -59,7 +54,7 @@
                                 </div>
                                 <div class="inline_form last"> <label class="label" for="message">예매내용</label>
                                     <div class="inline_control">
-                                        <p class="inline_txt selected">2017.2.17, 총 <span id="totalCount">0</span>매</p>
+                                        <p class="inline_txt selected"><javatime:format value="${currentTime}" pattern="yyyy.MM.dd"/>, 총 <span id="totalCount">0</span>매</p>
                                     </div>
                                 </div>
                             </form>
@@ -93,22 +88,14 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="gototop">
-            <a href="#" class="lnk_top"> <span class="lnk_top_text">TOP</span> </a>
-        </div>
-        <div id="footer" class="footer">
-            <p class="dsc_footer">네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및 환불 등과 관련한 의무와 책임은 각 회원에게 있습니다.</p>
-            <span class="copyright">© NAVER Corp.</span>
-        </div>
-    </footer>
+    <jsp:include page="footer.jsp"/>
 
     <script type="rv-template" id="displayImage">
 	    <div class="container_visual" style="width: 414px;">
 		    <ul class="visual_img">
 		        <li class="item" style="width: 414px;"> <img alt="상품이미지" class="img_thumb" src="./{{saveFileName}}"> <span class="img_bg"></span>
 		            <div class="preview_txt">
-		                <h2 class="preview_txt_tit">{{description}}</h2> <em class="preview_txt_dsc">₩12,000 ~ </em><em class="preview_txt_dsc">2017.2.17.(금)~2017.4.18.(화), 잔여티켓 2769매</em> </div>
+		                <h2 class="preview_txt_tit">{{description}}</h2> <em class="preview_txt_dsc">₩6,000 ~ </em><em class="preview_txt_dsc">2020.11.17.(화)~2020.12.5.(토), 잔여티켓 2769매</em> </div>
 		        </li>
 		    </ul>
 		</div>
@@ -128,7 +115,7 @@
 		    </div>
 		    <div class="qty_info_icon"> 
                 <strong class="product_amount"><span>{{formatTicket priceTypeName}}</span></strong>
-                <strong class="product_price"><span class="price">{{formatTicketPrice price}}</span><span class="price_type">원</span></strong> 
+                <strong class="product_price"><span class="price">{{formatEventTicketPrice price discountRate}}</span><span class="price_type">원</span></strong> 
                 <em class="product_dsc">{{formatTicketPrice price}}원 ({{discountRate}}% 할인가)</em>
             </div>
 		</div>
@@ -137,8 +124,7 @@
     <script type="rv-template" id="displayInfoDetail">
 	    <h3 class="in_tit"></h3>
 	    <p class="dsc">
-	        장소 : {{placeName}}<br> 
-	        기간 : 2017.2.17.(금)~2017.4.18.(화)
+	        장소 : {{placeName}}
 	    </p>
 	    <h3 class="in_tit">관람시간</h3>
 	    <p class="dsc">
@@ -155,9 +141,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="./js/error.js"></script>
-    <script src="./js/setup.js"></script>
-    <script src="./js/reservepageDisplayInfo.js"></script>
+    <script src="./js/module/error.js"></script>
+    <script src="./js/module/setup.js"></script>
+    <script src="./js/module/reservepageDisplayInfo.js"></script>
     <script type="module" src="./js/reservepage.js"></script>
 </body>
 </html>

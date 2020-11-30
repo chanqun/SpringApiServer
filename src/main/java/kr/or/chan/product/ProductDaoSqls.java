@@ -4,6 +4,7 @@ public class ProductDaoSqls {
 	public static final int GET_MORE_PRODUCT_COUNT = 4;
 	public static final String SELECT_ALL_PRODUCT = ""
 		+ "SELECT product.id id"
+		+ "		, display_info.id display_info_id"
 		+ "		, category_id"
 		+ "		, description"
 		+ "     , content"
@@ -16,11 +17,10 @@ public class ProductDaoSqls {
 		+ "JOIN product_image ON product.id = product_image.product_id "
 		+ "JOIN display_info ON product.id = display_info.product_id "
 		+ "WHERE product_image.type='th' "
-		+ "GROUP BY product.id "
 		+ "ORDER BY id ASC "
 		+ "LIMIT :start, :limit";
 
-	public static final String SELECT_PRODUCT_BY_ID = ""
+	public static final String SELECT_PRODUCT_BY_DISPLAY_ID = ""
 		+ "SELECT product.id product_id"
 		+ "		, category_id"
 		+ "		, description"
@@ -40,11 +40,12 @@ public class ProductDaoSqls {
 		+ "JOIN display_info_image ON display_info.id = display_info_image.display_info_id "
 		+ "JOIN product_image ON product.id = product_image.product_id "
 		+ "LEFT JOIN file_info ON file_info.id = display_info_image.file_id "
-		+ "WHERE product.id = :id "
-		+ "AND product_image.type='th' LIMIT 1 ";
+		+ "WHERE display_info.id = :id "
+		+ "AND product_image.type='th'";
 
 	public static final String SELECT_PRODUCT_BY_CATEGORY_ID = ""
 		+ "SELECT product.id id"
+		+ "		, display_info.id display_info_id"
 		+ "		, category_id"
 		+ "		, description"
 		+ "		, content"
@@ -57,7 +58,6 @@ public class ProductDaoSqls {
 		+ "JOIN display_info ON product.id = display_info.product_id "
 		+ "WHERE product_image.type='th' "
 		+ "AND category_id = :categoryId "
-		+ "GROUP BY product.id "
 		+ "ORDER BY id ASC "
 		+ "LIMIT :start, :limit";
 

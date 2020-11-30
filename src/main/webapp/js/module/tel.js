@@ -22,7 +22,7 @@ Tel.prototype = {
     },
 
     validateTel() {
-        const telRegExp = /^01\d-\d{3,4}-\d{4}$/;
+        const telRegExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
 
         return telRegExp.test(this.inputValue);
     }

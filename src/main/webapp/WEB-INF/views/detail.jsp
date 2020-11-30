@@ -13,22 +13,7 @@
 <body>
 	<div id="container">
 		<div class="header fade">
-			<header class="header_tit">
-				<h1 class="logo">
-					<a href="./main" class="lnk_logo" title="네이버"> 
-					   <span class="spr_bi ico_n_logo">네이버</span>
-					</a> 
-					<a href="./main" class="lnk_logo" title="예약"> 
-					   <span class="spr_bi ico_bk_logo">예약</span>
-					</a>
-				</h1>
-				<a href="#" class="btn_my"> 
-				    <span title="예약확인">
-				    <c:if test="${empty sessionScope.email}">예약확인</c:if>
-                    <c:if test="${!empty sessionScope.email}">${sessionScope.email}</c:if>
-				    </span>
-				</a>
-			</header>
+			<jsp:include page="header.jsp"/>
 		</div>
 		<div class="ct main">
 			<div>
@@ -202,17 +187,7 @@
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div class="gototop">
-			<a href="#" class="lnk_top"> <span class="lnk_top_text">TOP</span>
-			</a>
-		</div>
-		<div class="footer">
-			<p class="dsc_footer">네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및
-				환불 등과 관련한 의무와 책임은 각 회원에게 있습니다.</p>
-			<span class="copyright">© NAVER Corp.</span>
-		</div>
-	</footer>
+	<jsp:include page="footer.jsp"/>
 	<div id="photoviwer"></div>
 
     <script type="rv-template" id="shortReview">
@@ -308,10 +283,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="./js/error.js"></script>
-    <script src="./js/setup.js"></script>
-    <script src="./js/comment.js"></script>
-	<script src="./js/detailpageProduct.js"></script>
+    <script src="./js/module/error.js"></script>
+    <script src="./js/module/setup.js"></script>
+    <script src="./js/module/comment.js"></script>
+	<script src="./js/module/detailpageProduct.js"></script>
 	<script src="./js/detailpage.js"></script>
 </body>
 </html>

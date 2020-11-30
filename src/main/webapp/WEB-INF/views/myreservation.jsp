@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="javatime" uri="http://sargue.net/jsptags/time"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,19 +14,7 @@
 </head>
 <body>
     <div id="container">
-        <div class="header">
-            <header class="header_tit">
-                <h1 class="logo">
-                    <a href="./main" class="lnk_logo" title="네이버"> <span class="spr_bi ico_n_logo">네이버</span> </a>
-                    <a href="./main" class="lnk_logo" title="예약"> <span class="spr_bi ico_bk_logo">예약</span> </a>
-                </h1>
-                <a href="#" class="btn_my">
-                    <span title="내예약" class="viewReservation">       
-                        <span title="예약확인" id="reservation_email">${sessionScope.email}</span>
-                    </span>
-                </a>
-            </header>
-        </div>
+        <jsp:include page="header.jsp"/>
         <hr>
         <div class="ct">
             <div class="section_my">
@@ -37,13 +26,13 @@
                             <a href="#" class="link_summary_board on"> <i class="spr_book2 ico_book2"></i> <em class="tit">전체</em> <span class="figure">${fn:length(reservationList)}</span> </a>
                         </li>
                         <li class="item">
-                            <a href="#" class="link_summary_board"> <i class="spr_book2 ico_book_ss"></i> <em class="tit">이용예정</em> <span class="figure">0</span> </a>
+                            <a href="#" class="link_summary_board"> <i class="spr_book2 ico_book_ss"></i> <em class="tit">이용예정</em> <span class="figure" id="confirmedCount">0</span> </a>
                         </li>
                         <li class="item">
-                            <a href="#" class="link_summary_board"> <i class="spr_book2 ico_check"></i> <em class="tit">이용완료</em> <span class="figure">0</span> </a>
+                            <a href="#" class="link_summary_board"> <i class="spr_book2 ico_check"></i> <em class="tit">이용완료</em> <span class="figure" id="usedCount">0</span> </a>
                         </li>
                         <li class="item">
-                            <a href="#" class="link_summary_board"> <i class="spr_book2 ico_back"></i> <em class="tit">취소·환불</em> <span class="figure">0</span> </a>
+                            <a href="#" class="link_summary_board"> <i class="spr_book2 ico_back"></i> <em class="tit">취소·환불</em> <span class="figure" id="cancelCount">0</span> </a>
                         </li>
                     </ul>
                 </div>
@@ -65,9 +54,10 @@
                                     <div class="right"></div>
                                 </div>
                             </div>
-                            <c:forEach items="${reservationList}" var="reservation" varStatus="status">
+                            <c:forEach items="${reservationList}" var="reservation">
+                            <c:if test="${reservation.cancelFlag eq 0 and currentDateTime<=reservation.reservationDate}">
 	                            <article class="card_item">
-	                                    <a href="#" class="link_booking_details">
+	                                    <a class="link_booking_details">
 	                                        <div class="card_body">
 	                                            <div class="left"></div>
 	                                            <div class="middle">
@@ -78,13 +68,13 @@
 	                                                        <li class="item">
 	                                                            <span class="item_tit">일정</span>
 	                                                            <em class="item_dsc">
-	                                                                ${reservation.reservationDate}
+	                                                                <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd"/>
 	                                                            </em>
 	                                                        </li>
 	                                                        <li class="item">
 	                                                            <span class="item_tit">내역</span>
 	                                                            <em class="item_dsc">
-	                                                                ${reservation.price}
+	                                                                ${reservation.detail}
 	                                                            </em>
 	                                                        </li>
 	                                                        <li class="item">
@@ -103,7 +93,7 @@
 	                                                    </div>
 	                                                    <!-- [D] 예약 신청중, 예약 확정 만 취소가능, 취소 버튼 클릭 시 취소 팝업 활성화 -->
 	                                                    <div class="booking_cancel">
-	                                                        <button class="btn"><span>취소</span></button>
+	                                                        <button class="btn" data-id="${reservation.reservationInfoId}"><span>취소</span></button>
 	                                                    </div>
 	                                                </div>
 	                                            </div>
@@ -117,9 +107,10 @@
 	                                    </a>
 	                                    <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
 	                                </article>
+	                            </c:if>
                                 </c:forEach>
                             </li>
-                            <li class="card used">
+                            <li class="card used used_check">
                                 <div class="link_booking_details">
                                     <div class="card_header">
                                         <div class="left"></div>
@@ -131,9 +122,10 @@
                                         <div class="right"></div>
                                     </div>
                                 </div>
-                                <c:forEach items="${reservationList}" var="reservation" varStatus="status">
+                                <c:forEach items="${reservationList}" var="reservation">
+                                <c:if test="${reservation.cancelFlag eq 0 && currentDateTime > reservation.reservationDate}">
 	                                <article class="card_item">
-		                                <a href="#" class="link_booking_details">
+		                                <a class="link_booking_details">
 		                                    <div class="card_body">
 		                                        <div class="left"></div>
 		                                        <div class="middle">
@@ -144,13 +136,13 @@
                                                             <li class="item">
                                                                 <span class="item_tit">일정</span>
                                                                 <em class="item_dsc">
-                                                                    ${reservation.reservationDate}
+                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd"/>
                                                                 </em>
                                                             </li>
                                                             <li class="item">
                                                                 <span class="item_tit">내역</span>
                                                                 <em class="item_dsc">
-                                                                    ${reservation.price}
+                                                                    ${reservation.detail}
                                                                 </em>
                                                             </li>
                                                             <li class="item">
@@ -183,6 +175,7 @@
 		                                </a>
 		                                <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
 		                            </article>
+		                        </c:if>
 	                            </c:forEach>
                             </li>
                             <li class="card used cancel">
@@ -197,10 +190,10 @@
                                         <div class="right"></div>
                                     </div>
                                 </div>
-                                <c:forEach items="${reservationList}" var="reservation" varStatus="status">
-                                <c:if test="reservation.cancleFlag eq 1">
+                                <c:forEach items="${reservationList}" var="reservation">
+                                <c:if test="${reservation.cancelFlag eq 1}">
 	                                <article class="card_item">
-	                                    <a href="#" class="link_booking_details">
+	                                    <a class="link_booking_details">
 	                                        <div class="card_body">
 	                                            <div class="left"></div>
 	                                            <div class="middle">
@@ -211,13 +204,13 @@
                                                             <li class="item">
                                                                 <span class="item_tit">일정</span>
                                                                 <em class="item_dsc">
-                                                                    ${reservation.reservationDate}
+                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd"/>
                                                                 </em>
                                                             </li>
                                                             <li class="item">
                                                                 <span class="item_tit">내역</span>
                                                                 <em class="item_dsc">
-                                                                    ${reservation.price}
+                                                                    ${reservation.detail}
                                                                 </em>
                                                             </li>
                                                             <li class="item">
@@ -263,15 +256,7 @@
             </div>
             <hr>
         </div>
-    <footer>
-        <div class="gototop">
-            <a href="#" class="lnk_top"> <span class="lnk_top_text">TOP</span> </a>
-        </div>
-        <div id="footer" class="footer">
-            <p class="dsc_footer">네이버(주)는 통신판매의 당사자가 아니며, 상품의정보, 거래조건, 이용 및 환불 등과 관련한 의무와 책임은 각 회원에게 있습니다.</p>
-            <span class="copyright">© NAVER Corp.</span>
-        </div>
-    </footer>
+    <jsp:include page="footer.jsp"/>
         <!-- 취소 팝업 -->
         <!-- [D] 활성화 display:block, 아니오 버튼 or 닫기 버튼 클릭 시 숨김 display:none; -->
     <div class="popup_booking_wrapper" style="display:none;">
@@ -300,6 +285,7 @@
         </div>
     </div>
         <!--// 취소 팝업 -->
-    <script src="./js/mypage.js"></script>
+    <script src="./js/module/error.js"></script>
+    <script type="module" src="./js/mypage.js"></script>
 </body>
 </html>

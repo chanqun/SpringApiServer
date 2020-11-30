@@ -223,6 +223,7 @@ function addProduct(products) {
         let productContent = productItem
             .replace("{detailId}", element.id)
             .replace("{id}", element.id)
+            .replace("{displayInfoId}", element.displayInfoId)
             .replace("{imageId}", element.imageId)
             .replace("{description}", element.description)
             .replace("{descriptionText}", element.description)

@@ -1,6 +1,6 @@
 package kr.or.chan.reservation;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ReservationResponse {
@@ -9,7 +9,7 @@ public class ReservationResponse {
 	private int displayInfoId;
 	private int cancelFlag;
 	private List<ReservationInfoPrice> price;
-	private Date reservationDate;
+	private LocalDateTime reservationDate;
 	private String reservationEmail;
 	private String reservationName;
 	private String reservationTel;
@@ -18,12 +18,13 @@ public class ReservationResponse {
 	private String description;
 	private String placeName;
 	private int totalPrice;
+	private String detail;
 
 	public ReservationResponse() {
 
 	}
 
-	public ReservationResponse(int reservationInfoId, int productId, int displayInfoId, int cancelFlag, List<ReservationInfoPrice> price, Date reservationDate, String reservationEmail, String reservationName, String reservationTel,
+	public ReservationResponse(int reservationInfoId, int productId, int displayInfoId, int cancelFlag, List<ReservationInfoPrice> price, LocalDateTime reservationDate, String reservationEmail, String reservationName, String reservationTel,
 		String createDate, String modifyDate) {
 		this.reservationInfoId = reservationInfoId;
 		this.productId = productId;
@@ -36,6 +37,14 @@ public class ReservationResponse {
 		this.reservationTel = reservationTel;
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 	public int getReservationInfoId() {
@@ -78,11 +87,11 @@ public class ReservationResponse {
 		this.price = price;
 	}
 
-	public Date getReservationDate() {
+	public LocalDateTime getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(Date reservationDate) {
+	public void setReservationDate(LocalDateTime reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 

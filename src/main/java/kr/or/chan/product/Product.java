@@ -1,6 +1,6 @@
 package kr.or.chan.product;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Product {
 	private int id;
@@ -8,9 +8,10 @@ public class Product {
 	private int productId;
 	private String description;
 	private String content;
-	private Date createDate;
-	private Date modifyDate;
+	private LocalDateTime createDate;
+	private LocalDateTime modifyDate;
 	private int imageId;
+	private int displayInfoId;
 	private String event;
 	private String placeName;
 	private String tel;
@@ -35,6 +36,14 @@ public class Product {
 
 	public void setProductId(int productId) {
 		this.productId = productId;
+	}
+
+	public int getDisplayInfoId() {
+		return displayInfoId;
+	}
+
+	public void setDisplayInfoId(int displayInfoId) {
+		this.displayInfoId = displayInfoId;
 	}
 
 	public String getType() {
@@ -101,19 +110,19 @@ public class Product {
 		this.content = content;
 	}
 
-	public Date getCreateDate() {
+	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 
-	public Date getModifyDate() {
+	public LocalDateTime getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setModifyDate(Date modifyDate) {
+	public void setModifyDate(LocalDateTime modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 

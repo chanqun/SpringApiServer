@@ -1,8 +1,9 @@
 window.addEventListener("DOMContentLoaded", function() {
     const productId = getParameterByName("id");
+    const displayInfoId = getParameterByName("display");
     const requestCommentCount = 3;
 
-    product.requestProductDetail(productId);
+    product.requestProductDetail(displayInfoId);
 
     comment.requestComment(productId, requestCommentCount);
     comment.requestCommentInfo(productId);
@@ -27,7 +28,9 @@ function bindEvent() {
 
 function moveReservePage() {
     const productId = getParameterByName("id");
-    location.href = "./reserve?id=" + productId;
+    const displayInfoId = getParameterByName("display");
+
+    location.href = "./reserve?id=" + productId + "&display=" + displayInfoId;
 }
 
 function moveImageArea(event) {

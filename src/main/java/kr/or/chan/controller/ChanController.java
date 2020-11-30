@@ -1,5 +1,6 @@
 package kr.or.chan.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -38,7 +39,10 @@ public class ChanController {
 	}
 
 	@GetMapping("reserve")
-	public String reserve() {
+	public String reserve(Model model) {
+		LocalDateTime currentTime = LocalDateTime.now();
+		model.addAttribute("currentTime", currentTime);
+
 		return "reserve";
 	}
 
@@ -47,6 +51,9 @@ public class ChanController {
 		if (userEmail != null) {
 			List<ReservationResponse> reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
 			model.addAttribute("reservationList", reservationResponseList);
+
+			LocalDateTime currentDateTime = LocalDateTime.now();
+			model.addAttribute("currentDateTime", currentDateTime);
 
 			return "myreservation";
 		} else {
@@ -57,16 +64,24 @@ public class ChanController {
 	@PostMapping("myreservation")
 	public String myreservationPost(@SessionAttribute(name = "email", required = false) String userEmail, @RequestParam(name = "reserve_email", required = false) String reservationEmail, HttpSession session, Model model) {
 		List<ReservationResponse> reservationResponseList = null;
-
 		if (userEmail != null) {
 			reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
 			model.addAttribute("reservationList", reservationResponseList);
 
+			LocalDateTime currentDateTime = LocalDateTime.now();
+			model.addAttribute("currentDateTime", currentDateTime);
+
 			return "myreservation";
 		} else if (reservationEmail != null && !reservationEmail.trim().equals("")) {
 			reservationResponseList = reservationService.getAllReservationByEmail(reservationEmail);
-			session.setAttribute("email", reservationEmail);
 			model.addAttribute("reservationList", reservationResponseList);
+
+			if (reservationResponseList.size() > 0) {
+				session.setAttribute("email", reservationEmail);
+			}
+
+			LocalDateTime currentDateTime = LocalDateTime.now();
+			model.addAttribute("currentDateTime", currentDateTime);
 
 			return "myreservation";
 		} else {

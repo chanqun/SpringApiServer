@@ -1,6 +1,6 @@
 package kr.or.chan.comment;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Comment {
 	private String description;
@@ -10,7 +10,7 @@ public class Comment {
 	private int totalCount;
 	private String comment;
 	private String reservationEmail;
-	private Date reservationDate;
+	private LocalDateTime reservationDate;
 	private String saveFileName;
 
 	public String getSaveFileName() {
@@ -77,11 +77,11 @@ public class Comment {
 		this.reservationEmail = reservationEmail;
 	}
 
-	public Date getReservationDate() {
+	public LocalDateTime getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(Date reservationDate) {
+	public void setReservationDate(LocalDateTime reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 

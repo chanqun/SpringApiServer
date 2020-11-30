@@ -1,6 +1,6 @@
 package kr.or.chan.reservation;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ReservationInfo {
 	private int id;
@@ -9,23 +9,23 @@ public class ReservationInfo {
 	private String reservationName;
 	private String reservationTel;
 	private String reservationEmail;
-	private Date reservationDate;
+	private LocalDateTime reservationDate;
 	private int cancelFlag;
-	private Date createDate;
-	private Date modifyDate;
+	private LocalDateTime createDate;
+	private LocalDateTime modifyDate;
 
 	public ReservationInfo() {
 
 	}
 
-	public ReservationInfo(int productId, int displayInfoId, String reservationName, String reservationTel, String reservationEmail, int cancelFlag, Date reservationDate) {
-		this.productId = productId;
-		this.displayInfoId = displayInfoId;
-		this.reservationName = reservationName;
-		this.reservationTel = reservationTel;
-		this.reservationEmail = reservationEmail;
-		this.cancelFlag = cancelFlag;
-		this.reservationDate = reservationDate;
+	public ReservationInfo(ReservationParameter reservationParameter) {
+		this.productId = reservationParameter.getProductId();
+		this.displayInfoId = reservationParameter.getDisplayInfoId();
+		this.reservationName = reservationParameter.getReservationName();
+		this.reservationTel = reservationParameter.getReservationTel();
+		this.reservationEmail = reservationParameter.getReservationEmail();
+		this.cancelFlag = 0;
+		this.reservationDate = LocalDateTime.now();
 	}
 
 	public int getId() {
@@ -76,14 +76,6 @@ public class ReservationInfo {
 		this.reservationEmail = reservationEmail;
 	}
 
-	public Date getReservationDate() {
-		return reservationDate;
-	}
-
-	public void setReservationDate(Date reservationDate) {
-		this.reservationDate = reservationDate;
-	}
-
 	public int getCancelFlag() {
 		return cancelFlag;
 	}
@@ -92,19 +84,27 @@ public class ReservationInfo {
 		this.cancelFlag = cancelFlag;
 	}
 
-	public Date getCreateDate() {
+	public LocalDateTime getReservationDate() {
+		return reservationDate;
+	}
+
+	public void setReservationDate(LocalDateTime reservationDate) {
+		this.reservationDate = reservationDate;
+	}
+
+	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 
-	public Date getModifyDate() {
+	public LocalDateTime getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setModifyDate(Date modifyDate) {
+	public void setModifyDate(LocalDateTime modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 

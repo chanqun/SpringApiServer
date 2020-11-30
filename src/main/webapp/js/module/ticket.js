@@ -33,9 +33,11 @@ Ticket.prototype = {
         if (count <= 0) {
             countElement.classList.add("disabled");
             this.ticketBody.querySelector(".ico_minus3").classList.add("disabled");
+            this.ticketBody.querySelector(".total_price").style.color = "#bbb";
         } else if (count >= 1) {
             countElement.classList.remove("disabled");
             this.ticketBody.querySelector(".ico_minus3").classList.remove("disabled");
+            this.ticketBody.querySelector(".total_price").style.color = "black";
         }
 
         this.ticketBody.querySelector(".count_control_input").setAttribute("value", count);
