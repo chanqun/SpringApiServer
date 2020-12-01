@@ -68,7 +68,7 @@
 	                                                        <li class="item">
 	                                                            <span class="item_tit">일정</span>
 	                                                            <em class="item_dsc">
-	                                                                <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd"/>
+	                                                                <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd HH:mm"/>
 	                                                            </em>
 	                                                        </li>
 	                                                        <li class="item">
@@ -136,7 +136,7 @@
                                                             <li class="item">
                                                                 <span class="item_tit">일정</span>
                                                                 <em class="item_dsc">
-                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd"/>
+                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd HH:mm"/>
                                                                 </em>
                                                             </li>
                                                             <li class="item">
@@ -204,7 +204,7 @@
                                                             <li class="item">
                                                                 <span class="item_tit">일정</span>
                                                                 <em class="item_dsc">
-                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd"/>
+                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd HH:mm"/>
                                                                 </em>
                                                             </li>
                                                             <li class="item">

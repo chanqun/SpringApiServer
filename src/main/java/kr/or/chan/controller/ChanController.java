@@ -38,6 +38,11 @@ public class ChanController {
 		return "review";
 	}
 
+	@GetMapping("reviewWrite")
+	public String reviewWrite() {
+		return "reviewWrite";
+	}
+
 	@GetMapping("reserve")
 	public String reserve(Model model) {
 		LocalDateTime currentTime = LocalDateTime.now();
