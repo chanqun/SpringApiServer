@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -18,7 +17,7 @@
             <div class="ct_wrap">
                 <div class="top_title review_header">
                     <a href="./myreservation" class="btn_back" title="이전 화면으로 이동"> <i class="fn fn-backward1"></i> </a>
-                    <h2><span class="title">클림트 인사이드</span></h2>
+                    <h2><span class="title">${param.description}</span></h2>
                 </div>
                 <!-- 리뷰 별점 -->
                 <div class="write_act">
@@ -55,7 +54,7 @@
                         </span>
                         <span class="left_space">(단, 리뷰 포인트는 ID 당 1일 최대 5건까지 지급됩니다.)</span>
                     </a>
-                    <textarea cols="30" rows="10" class="review_textarea"></textarea>
+                    <textarea cols="30" rows="10" class="review_textarea" maxlength="400"></textarea>
                 </div>
                 <!-- //리뷰 입력 -->
 
@@ -66,7 +65,7 @@
                             <i class="fn fn-image1" aria-hidden="true"></i>
                             <span class="text_add_photo">사진 추가</span>
                         </label>
-                        <input type="file" class="hidden_input" id="reviewImageFileOpenInput" accept="image/*" multiple>
+                        <input type="file" class="hidden_input" id="reviewImageFileOpenInput" accept="image/png, image.jpg">
                         <div class="guide_review">
                             <span>0</span>/400
                             <span>(최소5자이상)</span>
@@ -101,5 +100,7 @@
         </div>
     </div>
     <jsp:include page="footer.jsp"/>
+
+    <script type="module" src="./js/reviewWrite.js"></script>
 </body>
 </html>

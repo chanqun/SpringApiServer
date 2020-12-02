@@ -3929,8 +3929,7 @@ button {
 	cursor: pointer;
 }
 
-.write_act .review_rating .rating .rating_rdo:checked+.span, .write_act .review_rating .rating .rating_rdo.checked+.span
-	{
+.write_act .review_rating .rating .rating_rdo.checked+.span {
 	background-position: -37px -92px;
 }
 

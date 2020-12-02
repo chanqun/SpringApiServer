@@ -11,10 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const exitButton = popupWrapper.querySelector(".popup_btn_close");
     const popup = new Popup(popupWrapper, titleSpan, date, noButton, yesButton, exitButton);
 
-    document.querySelectorAll(".booking_cancel .btn").forEach((element) => {
+    document.querySelectorAll(".cancelbtn").forEach((element) => {
         element.addEventListener("click", () => {
             const cardElement = element.parentElement.parentElement;
             popup.openPopup(element.dataset.id, cardElement.querySelector(".tit").innerText, cardElement.querySelector(".detail li:nth-child(1) .item_dsc").innerText);
+        })
+    })
+
+    document.querySelectorAll(".reviewBtn").forEach((element) => {
+        element.addEventListener("click", () => {
+            location.href = "./reviewWrite?displayInfoId=" + element.dataset.reservationInfoId + "&description=" + element.dataset.description;
         })
     })
 
