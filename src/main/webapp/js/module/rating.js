@@ -1,6 +1,7 @@
 export default function Rating(ratingDiv, rankSpan) {
     this.ratingDiv = ratingDiv;
     this.rankSpan = rankSpan;
+    this.score = 0;
 
     this.registerEvents();
 }
@@ -34,6 +35,9 @@ Rating.prototype = {
         } else {
             this.rankSpan.classList.remove("gray_star");
         }
+
+        this.score = starCount;
         this.rankSpan.innerText = starCount;
+        //document.querySelector("#hidden_score").value = starCount.toString();
     }
 }

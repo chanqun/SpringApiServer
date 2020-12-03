@@ -24,7 +24,7 @@
             <div class="wrap_review_list">
                 <div class="review_header">
                     <div class="top_title gr">
-                        <a href="./detail?id=${param.id}" class="btn_back" title="이전 화면으로 이동"> 
+                        <a href="./detail?id=${param.id}&display=${param.display}" class="btn_back" title="이전 화면으로 이동"> 
                             <i class="fn fn-backward1"></i>
                         </a>
                         <h2>
@@ -62,7 +62,7 @@
                 <div class="review_area">
                     <div class="thumb_area">
                         <a href="#" class="thumb" title="이미지 크게 보기"> 
-                            <img width="90" height="90" class="img_vertical_top" src="./{{saveFileName}}" alt="리뷰이미지">
+                            <img width="90" height="90" class="img_vertical_top" src="./api/file?fileName={{saveFileName}}" alt="리뷰이미지">
                         </a>
                         <span class="img_count" style="display: none;">1</span>
                     </div>

@@ -2,6 +2,7 @@ package kr.or.chan.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
@@ -53,7 +54,9 @@ public class ChanController {
 
 	@GetMapping("myreservation")
 	public String myreservation(@SessionAttribute(name = "email", required = false) String userEmail, HttpSession session, Model model) {
-		if (userEmail != null) {
+		if (Objects.isNull(userEmail)) {
+			return "bookinglogin";
+		} else {
 			List<ReservationResponse> reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
 			model.addAttribute("reservationList", reservationResponseList);
 
@@ -61,15 +64,13 @@ public class ChanController {
 			model.addAttribute("currentDateTime", currentDateTime);
 
 			return "myreservation";
-		} else {
-			return "bookinglogin";
 		}
 	}
 
 	@PostMapping("myreservation")
 	public String myreservationPost(@SessionAttribute(name = "email", required = false) String userEmail, @RequestParam(name = "reserve_email", required = false) String reservationEmail, HttpSession session, Model model) {
 		List<ReservationResponse> reservationResponseList = null;
-		if (userEmail != null) {
+		if (Objects.nonNull(userEmail)) {
 			reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
 			model.addAttribute("reservationList", reservationResponseList);
 
@@ -77,7 +78,7 @@ public class ChanController {
 			model.addAttribute("currentDateTime", currentDateTime);
 
 			return "myreservation";
-		} else if (reservationEmail != null && !reservationEmail.trim().equals("")) {
+		} else if (Objects.nonNull(reservationEmail) && !reservationEmail.trim().equals("")) {
 			reservationResponseList = reservationService.getAllReservationByEmail(reservationEmail);
 			model.addAttribute("reservationList", reservationResponseList);
 

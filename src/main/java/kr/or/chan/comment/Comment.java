@@ -1,17 +1,44 @@
 package kr.or.chan.comment;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Comment {
-	private String description;
 	private int reservationInfoId;
+	private int commentId;
+	private int productId;
+	private int totalCount;
 	private double score;
 	private double average;
-	private int totalCount;
+	private String fileId;
+	private String description;
 	private String comment;
 	private String reservationEmail;
-	private LocalDateTime reservationDate;
 	private String saveFileName;
+	private Date reservationDate;
+
+	public int getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(int commentId) {
+		this.commentId = commentId;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(String fileId) {
+		this.fileId = fileId;
+	}
 
 	public String getSaveFileName() {
 		return saveFileName;
@@ -77,11 +104,11 @@ public class Comment {
 		this.reservationEmail = reservationEmail;
 	}
 
-	public LocalDateTime getReservationDate() {
+	public Date getReservationDate() {
 		return reservationDate;
 	}
 
-	public void setReservationDate(LocalDateTime reservationDate) {
+	public void setReservationDate(Date reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 

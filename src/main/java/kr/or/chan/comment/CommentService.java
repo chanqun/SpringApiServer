@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CommentService {
@@ -20,5 +21,13 @@ public class CommentService {
 
 	public Comment getTotalCountAndAverage(int productId) {
 		return commentDao.getTotalCountAndAverage(productId);
+	}
+
+	public int addComment(Comment comment) {
+		return commentDao.insertComment(comment);
+	}
+
+	public int addCommentWithImage(Comment comment, MultipartFile imageFile) {
+		return commentDao.insertCommentImage(comment);
 	}
 }

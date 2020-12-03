@@ -37,4 +37,22 @@ public class CommentDaoSqls {
 		+ "LEFT JOIN file_info ON file_info.id = reservation_user_comment_image.file_id "
 		+ "WHERE reservation_user_comment.product_id = :productId "
 		+ "LIMIT 3";
+
+	public static final String INSERT_RESERVATION_USER_COMMENT = ""
+		+ "INSERT INTO reservation_user_comment "
+		+ "(product_id, reservation_info_id, score, comment, create_date, modify_date) "
+		+ "VALUES "
+		+ "(:productId, :reservationInfoId, :score, :comment, now(), now())";
+
+	public static final String INSERT_RESERVATION_USER_COMMENT_IMAGE = ""
+		+ "INSERT INTO reservation_user_comment_image "
+		+ "(reservation_info_id, reservation_user_comment_id, file_id) "
+		+ "VALUES "
+		+ "(:reservationInfoId, :commentId, :fileId)";
+
+	public static final String INSERT_COMMENT_IMAGE_FILE_INFO = ""
+		+ "INSERT INTO file_info "
+		+ "(file_name, save_file_name, content_type, delete_flag, create_date, modify_date) "
+		+ "VALUES "
+		+ "(:fileName, :saveFileName, contentType, 0, NOW(), NOW())";
 }

@@ -3,6 +3,7 @@ package kr.or.chan.productimage;
 import static kr.or.chan.productimage.ProductImageDaoSqls.*;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -21,8 +22,8 @@ public class ProductImageDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public ProductImage selectProductImageById(int productId) {
+	public List<ProductImage> selectProductImageById(int productId) {
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
-		return jdbcTemplate.queryForObject(SELECT_ONE_IMAGE_BY_ID, params, rowMapper);
+		return jdbcTemplate.query(SELECT_IMAGE_BY_ID, params, rowMapper);
 	}
 }

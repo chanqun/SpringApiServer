@@ -6,6 +6,7 @@ public class Promotion {
 	private String description;
 	private String content;
 	private String placeName;
+	private String saveFileName;
 
 	public int getId() {
 		return id;
@@ -29,6 +30,14 @@ public class Promotion {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
 	}
 
 	public String getContent() {

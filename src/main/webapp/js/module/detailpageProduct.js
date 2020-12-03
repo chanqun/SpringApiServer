@@ -1,7 +1,7 @@
 let product = {
     productImageIndex: 0,
 
-    requestMoreProductImage(productId) {
+    requestProductImage(productId) {
         let httpRequest = new XMLHttpRequest();
 
         httpRequest.addEventListener("load", function() {
@@ -9,11 +9,14 @@ let product = {
                 return;
             }
 
-            let productImage = {};
-            if (httpRequest.responseText) {
-                productImage = JSON.parse(httpRequest.responseText);
+            let productImage = JSON.parse(httpRequest.responseText);
+
+            product.showProductImage(productImage[0]);
+            if (productImage.length >= 2) {
+                product.showMoreProductImage(productImage[1]);
+            } else {
+                product.showMoreProductImage();
             }
-            product.showMoreProductImage(productImage);
         })
 
         httpRequest.open("GET", "./api/productimage/" + productId, true);
@@ -21,7 +24,7 @@ let product = {
     },
 
     showMoreProductImage(productImage) {
-        if (!productImage.id) {
+        if (!productImage) {
             deleteMovingButton();
             return;
         }
@@ -42,7 +45,7 @@ let product = {
         visualImageArea.innerHTML += visualImage;
     },
 
-    requestProductDetail(productId) {
+    requestProductDetail(productId, displayInfoId) {
         let httpRequest = new XMLHttpRequest();
 
         httpRequest.addEventListener("load", function() {
@@ -53,11 +56,10 @@ let product = {
             let productDetail = JSON.parse(httpRequest.responseText);
             product.showProductDetail(productDetail);
             product.showProductEvent(productDetail);
-            product.showProductImage(productDetail);
-            product.requestMoreProductImage(productId);
+            product.requestProductImage(productId);
         })
 
-        httpRequest.open("GET", "./api/products/" + productId, true);
+        httpRequest.open("GET", "./api/products/" + displayInfoId, true);
         httpRequest.send();
     },
 

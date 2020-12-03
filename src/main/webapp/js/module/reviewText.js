@@ -14,7 +14,7 @@ ReviewText.prototype = {
         })
 
         this.reviewTextArea.addEventListener("blur", (event) => {
-            if (!event.target.textLength) {
+            if (event.target.textLength === 0) {
                 this.reviewWriteAnchor.style.display = "block";
             }
         })

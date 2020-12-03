@@ -42,7 +42,7 @@ public class ProductApiController {
 	}
 
 	@GetMapping("/productimage/{productId}")
-	public ProductImage getProductImage(@PathVariable int productId) {
+	public List<ProductImage> getProductImage(@PathVariable int productId) {
 		return productImageService.getProductImageById(productId);
 	}
 

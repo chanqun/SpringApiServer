@@ -10,7 +10,11 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -35,5 +39,26 @@ public class CommentDao {
 	public Comment getTotalCountAndAverage(int productId) {
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
 		return jdbcTemplate.queryForObject(GET_COUNT_AND_AVG_SCORE, params, rowMapper);
+	}
+
+	public int insertComment(Comment comment) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(comment);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+
+		return jdbcTemplate.update(INSERT_RESERVATION_USER_COMMENT, params, keyHolder);
+	}
+
+	public int insertCommentImage(Comment comment) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(comment);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+
+		return jdbcTemplate.update(INSERT_RESERVATION_USER_COMMENT_IMAGE, params, keyHolder);
+	}
+
+	public int insertCommentFileInfo(Comment comment) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(comment);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+
+		return jdbcTemplate.update(INSERT_COMMENT_IMAGE_FILE_INFO, params, keyHolder);
 	}
 }

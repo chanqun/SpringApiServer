@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".reviewBtn").forEach((element) => {
         element.addEventListener("click", () => {
-            location.href = "./reviewWrite?displayInfoId=" + element.dataset.reservationInfoId + "&description=" + element.dataset.description;
+            location.href = "./reviewWrite?productId=" + element.dataset.productId + "&reservationInfoId=" + element.dataset.reservationInfoId + "&description=" + element.dataset.description;
         })
     })
 

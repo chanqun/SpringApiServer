@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", function() {
     const displayInfoId = getParameterByName("display");
     const requestCommentCount = 3;
 
-    product.requestProductDetail(displayInfoId);
+    product.requestProductDetail(productId, displayInfoId);
 
     comment.requestComment(productId, requestCommentCount);
     comment.requestCommentInfo(productId);

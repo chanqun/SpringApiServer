@@ -56,58 +56,58 @@
                             </div>
                             <c:forEach items="${reservationList}" var="reservation">
                             <c:if test="${reservation.cancelFlag eq 0 and currentDateTime<=reservation.reservationDate}">
-	                            <article class="card_item">
-	                                    <a class="link_booking_details">
-	                                        <div class="card_body">
-	                                            <div class="left"></div>
-	                                            <div class="middle">
-	                                                <div class="card_detail">
-	                                                    <em class="booking_number">No.<fmt:formatNumber minIntegerDigits="7" value="${reservation.reservationInfoId}" pattern=" "/></em>
-	                                                    <h4 class="tit">${reservation.description}</h4>
-	                                                    <ul class="detail">
-	                                                        <li class="item">
-	                                                            <span class="item_tit">일정</span>
-	                                                            <em class="item_dsc">
-	                                                                <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd HH:mm"/>
-	                                                            </em>
-	                                                        </li>
-	                                                        <li class="item">
-	                                                            <span class="item_tit">내역</span>
-	                                                            <em class="item_dsc">
-	                                                                ${reservation.detail}
-	                                                            </em>
-	                                                        </li>
-	                                                        <li class="item">
-	                                                            <span class="item_tit">장소</span>
-	                                                            <em class="item_dsc">
-	                                                                ${reservation.placeName}
-	                                                            </em>
-	                                                        </li>
-	                                                    </ul>
-	                                                    <div class="price_summary">
-	                                                        <span class="price_tit">결제 예정금액</span>
-	                                                        <em class="price_amount">
-	                                                            <span><fmt:formatNumber value="${reservation.totalPrice}" pattern="#,###,###"/></span>
-	                                                            <span class="unit">원</span>
-	                                                        </em>
-	                                                    </div>
-	                                                    <!-- [D] 예약 신청중, 예약 확정 만 취소가능, 취소 버튼 클릭 시 취소 팝업 활성화 -->
-	                                                    <div class="booking_cancel">
-	                                                        <button class="btn cancelbtn" data-id="${reservation.reservationInfoId}"><span>취소</span></button>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="right"></div>
-	                                        </div>
-	                                        <div class="card_footer">
-	                                            <div class="left"></div>
-	                                            <div class="middle"></div>
-	                                            <div class="right"></div>
-	                                        </div>
-	                                    </a>
-	                                    <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
-	                                </article>
-	                            </c:if>
+                                <article class="card_item">
+                                        <a class="link_booking_details">
+                                            <div class="card_body">
+                                                <div class="left"></div>
+                                                <div class="middle">
+                                                    <div class="card_detail">
+                                                        <em class="booking_number">No.<fmt:formatNumber minIntegerDigits="7" value="${reservation.reservationInfoId}" pattern=" "/></em>
+                                                        <h4 class="tit">${reservation.description}</h4>
+                                                        <ul class="detail">
+                                                            <li class="item">
+                                                                <span class="item_tit">일정</span>
+                                                                <em class="item_dsc">
+                                                                    <javatime:format value="${reservation.reservationDate}" pattern="yyyy.MM.dd HH:mm"/>
+                                                                </em>
+                                                            </li>
+                                                            <li class="item">
+                                                                <span class="item_tit">내역</span>
+                                                                <em class="item_dsc">
+                                                                    ${reservation.detail}
+                                                                </em>
+                                                            </li>
+                                                            <li class="item">
+                                                                <span class="item_tit">장소</span>
+                                                                <em class="item_dsc">
+                                                                    ${reservation.placeName}
+                                                                </em>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="price_summary">
+                                                            <span class="price_tit">결제 예정금액</span>
+                                                            <em class="price_amount">
+                                                                <span><fmt:formatNumber value="${reservation.totalPrice}" pattern="#,###,###"/></span>
+                                                                <span class="unit">원</span>
+                                                            </em>
+                                                        </div>
+                                                        <!-- [D] 예약 신청중, 예약 확정 만 취소가능, 취소 버튼 클릭 시 취소 팝업 활성화 -->
+                                                        <div class="booking_cancel">
+                                                            <button class="btn cancelbtn" data-id="${reservation.reservationInfoId}"><span>취소</span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right"></div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <div class="left"></div>
+                                                <div class="middle"></div>
+                                                <div class="right"></div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
+                                    </article>
+                                </c:if>
                                 </c:forEach>
                             </li>
                             <li class="card used used_check">
@@ -124,12 +124,12 @@
                                 </div>
                                 <c:forEach items="${reservationList}" var="reservation">
                                 <c:if test="${reservation.cancelFlag eq 0 && currentDateTime > reservation.reservationDate}">
-	                                <article class="card_item">
-		                                <a class="link_booking_details">
-		                                    <div class="card_body">
-		                                        <div class="left"></div>
-		                                        <div class="middle">
-		                                            <div class="card_detail">
+                                    <article class="card_item">
+                                        <a class="link_booking_details">
+                                            <div class="card_body">
+                                                <div class="left"></div>
+                                                <div class="middle">
+                                                    <div class="card_detail">
                                                         <em class="booking_number">No.<fmt:formatNumber minIntegerDigits="7" value="${reservation.reservationInfoId}" pattern=" "/></em>
                                                         <h4 class="tit">${reservation.description}</h4>
                                                         <ul class="detail">
@@ -159,24 +159,24 @@
                                                                 <span class="unit">원</span>
                                                             </em>
                                                         </div>
-		                                                <!-- [D] 예약 신청중, 예약 확정 만 취소가능, 취소 버튼 클릭 시 취소 팝업 활성화 -->
-		                                                <div class="booking_cancel">
-	                                                        <button class="btn reviewBtn" data-reservation-info-id="${reservation.reservationInfoId}" data-description="${reservation.description}"><span>예매자 리뷰 남기기</span></button>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                        <div class="right"></div>
-		                                    </div>
-		                                    <div class="card_footer">
-		                                        <div class="left"></div>
-		                                        <div class="middle"></div>
-		                                        <div class="right"></div>
-		                                    </div>
-		                                </a>
-		                                <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
-		                            </article>
-		                        </c:if>
-	                            </c:forEach>
+                                                        <!-- [D] 예약 신청중, 예약 확정 만 취소가능, 취소 버튼 클릭 시 취소 팝업 활성화 -->
+                                                        <div class="booking_cancel">
+                                                            <button class="btn reviewBtn" data-product-id="${reservation.productId}" data-reservation-info-id="${reservation.reservationInfoId}" data-description="${reservation.description}"><span>예매자 리뷰 남기기</span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="right"></div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <div class="left"></div>
+                                                <div class="middle"></div>
+                                                <div class="right"></div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="fn fn-share1 naver-splugin btn_goto_share" title="공유하기"></a>
+                                    </article>
+                                </c:if>
+                                </c:forEach>
                             </li>
                             <li class="card used cancel">
                                 <div class="link_booking_details">
@@ -192,12 +192,12 @@
                                 </div>
                                 <c:forEach items="${reservationList}" var="reservation">
                                 <c:if test="${reservation.cancelFlag eq 1}">
-	                                <article class="card_item">
-	                                    <a class="link_booking_details">
-	                                        <div class="card_body">
-	                                            <div class="left"></div>
-	                                            <div class="middle">
-	                                                <div class="card_detail">
+                                    <article class="card_item">
+                                        <a class="link_booking_details">
+                                            <div class="card_body">
+                                                <div class="left"></div>
+                                                <div class="middle">
+                                                    <div class="card_detail">
                                                         <em class="booking_number">No.<fmt:formatNumber minIntegerDigits="7" value="${reservation.reservationInfoId}" pattern=" "/></em>
                                                         <h4 class="tit">${reservation.description}</h4>
                                                         <ul class="detail">
@@ -227,18 +227,18 @@
                                                                 <span class="unit">원</span>
                                                             </em>
                                                         </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="right"></div>
-	                                        </div>
-	                                        <div class="card_footer">
-	                                            <div class="left"></div>
-	                                            <div class="middle"></div>
-	                                            <div class="right"></div>
-	                                        </div>
-	                                    </a>
-	                                </article>
-	                            </c:if>
+                                                    </div>
+                                                </div>
+                                                <div class="right"></div>
+                                            </div>
+                                            <div class="card_footer">
+                                                <div class="left"></div>
+                                                <div class="middle"></div>
+                                                <div class="right"></div>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </c:if>
                                 </c:forEach>
                             </li>
                         </ul>

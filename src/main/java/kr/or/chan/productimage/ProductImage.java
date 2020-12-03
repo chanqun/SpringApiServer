@@ -6,7 +6,7 @@ public class ProductImage {
 	private String type;
 	private int fileId;
 	private String description;
-	private String saveFileImageName;
+	private String saveFileName;
 
 	public int getId() {
 		return id;
@@ -48,12 +48,12 @@ public class ProductImage {
 		this.description = description;
 	}
 
-	public String getSaveFileImageName() {
-		return saveFileImageName;
+	public String getSaveFileName() {
+		return saveFileName;
 	}
 
-	public void setSaveFileImageName(String saveFileImageName) {
-		this.saveFileImageName = saveFileImageName;
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
 	}
 
 	@Override

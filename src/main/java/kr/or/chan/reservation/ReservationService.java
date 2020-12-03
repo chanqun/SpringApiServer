@@ -22,7 +22,7 @@ public class ReservationService {
 
 		for (ReservationInfoPrice reservationInfoPrice : reservationParameter.getPrice()) {
 			reservationInfoPrice.setReservationInfoId(reservationInfoKey);
-			Integer reservationPriceKey = reservationDao.insertReservationPrice(reservationInfoPrice);
+			int reservationPriceKey = reservationDao.insertReservationPrice(reservationInfoPrice);
 			reservationInfoPrice.setReservationInfoId(reservationPriceKey);
 		}
 	}
