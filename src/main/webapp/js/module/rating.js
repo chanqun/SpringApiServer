@@ -38,6 +38,5 @@ Rating.prototype = {
 
         this.score = starCount;
         this.rankSpan.innerText = starCount;
-        //document.querySelector("#hidden_score").value = starCount.toString();
     }
 }

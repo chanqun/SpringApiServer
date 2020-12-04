@@ -44,15 +44,15 @@ public class CommentDaoSqls {
 		+ "VALUES "
 		+ "(:productId, :reservationInfoId, :score, :comment, now(), now())";
 
-	public static final String INSERT_RESERVATION_USER_COMMENT_IMAGE = ""
+	public static final String INSERT_COMMENT_IMAGE_INFO = ""
 		+ "INSERT INTO reservation_user_comment_image "
 		+ "(reservation_info_id, reservation_user_comment_id, file_id) "
 		+ "VALUES "
 		+ "(:reservationInfoId, :commentId, :fileId)";
 
-	public static final String INSERT_COMMENT_IMAGE_FILE_INFO = ""
+	public static final String INSERT_COMMENT_IMAGE = ""
 		+ "INSERT INTO file_info "
 		+ "(file_name, save_file_name, content_type, delete_flag, create_date, modify_date) "
 		+ "VALUES "
-		+ "(:fileName, :saveFileName, contentType, 0, NOW(), NOW())";
+		+ "(:fileName, :saveFileName, :contentType, 0, NOW(), NOW())";
 }

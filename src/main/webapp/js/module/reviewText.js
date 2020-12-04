@@ -26,11 +26,9 @@ ReviewText.prototype = {
 
     validateTextCount() {
         const textLength = this.reviewTextArea.textLength;
+        let minTextLength = 5;
+        let maxTextLength = 400;
 
-        if (textLength > 4 && textLength < 401) {
-            return true;
-        } else {
-            return false;
-        }
+        return (textLength >= minTextLength && textLength <= maxTextLength);
     }
 }

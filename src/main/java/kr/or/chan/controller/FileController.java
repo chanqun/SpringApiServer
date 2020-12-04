@@ -6,17 +6,23 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@PropertySource("classpath:application.properties")
 @RestController
 @RequestMapping("/api/file")
 public class FileController {
+	@Value("${spring.datasource.file}")
+	private String FILE_PATH;
+
 	@GetMapping
 	public void getImageByFileName(@RequestParam String fileName, HttpServletResponse response) {
-		String saveFileName = "c:/reservation/" + fileName;
+		String saveFileName = FILE_PATH + fileName;
 
 		File imageFile = new File(saveFileName);
 

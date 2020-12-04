@@ -15,9 +15,7 @@ ReviewImage.prototype = {
             this.addReviewImage(reviewImage);
         })
 
-        this.deleteButton.addEventListener("click", () => {
-            this.deleteReviewImage();
-        })
+        this.deleteButton.addEventListener("click", this.deleteReviewImage.bind(this));
     },
 
     addReviewImage(reviewImage) {

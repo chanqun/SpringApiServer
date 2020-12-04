@@ -45,20 +45,26 @@ public class CommentDao {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(comment);
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
-		return jdbcTemplate.update(INSERT_RESERVATION_USER_COMMENT, params, keyHolder);
+		jdbcTemplate.update(INSERT_RESERVATION_USER_COMMENT, params, keyHolder);
+
+		return keyHolder.getKey().intValue();
 	}
 
 	public int insertCommentImage(Comment comment) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(comment);
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
-		return jdbcTemplate.update(INSERT_RESERVATION_USER_COMMENT_IMAGE, params, keyHolder);
+		jdbcTemplate.update(INSERT_COMMENT_IMAGE, params, keyHolder);
+
+		return keyHolder.getKey().intValue();
 	}
 
 	public int insertCommentFileInfo(Comment comment) {
 		SqlParameterSource params = new BeanPropertySqlParameterSource(comment);
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
-		return jdbcTemplate.update(INSERT_COMMENT_IMAGE_FILE_INFO, params, keyHolder);
+		jdbcTemplate.update(INSERT_COMMENT_IMAGE_INFO, params, keyHolder);
+
+		return keyHolder.getKey().intValue();
 	}
 }

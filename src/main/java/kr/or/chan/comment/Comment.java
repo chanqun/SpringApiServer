@@ -7,13 +7,15 @@ public class Comment {
 	private int commentId;
 	private int productId;
 	private int totalCount;
+	private int fileId;
 	private double score;
 	private double average;
-	private String fileId;
 	private String description;
 	private String comment;
 	private String reservationEmail;
 	private String saveFileName;
+	private String contentType;
+	private String fileName;
 	private Date reservationDate;
 
 	public int getCommentId() {
@@ -32,12 +34,20 @@ public class Comment {
 		this.productId = productId;
 	}
 
-	public String getFileId() {
+	public int getFileId() {
 		return fileId;
 	}
 
-	public void setFileId(String fileId) {
+	public void setFileId(int fileId) {
 		this.fileId = fileId;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public String getSaveFileName() {
@@ -46,6 +56,14 @@ public class Comment {
 
 	public void setSaveFileName(String saveFileName) {
 		this.saveFileName = saveFileName;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 
 	public double getAverage() {

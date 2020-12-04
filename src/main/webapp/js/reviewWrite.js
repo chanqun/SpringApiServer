@@ -39,12 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             alert("리뷰 등록을 성공하였습니다.");
+            location.href = "./myreservation";
         })
 
         httpRequest.open("POST", "./api/reservations/" + reservationInfoId + "/comments", true);
         httpRequest.send(commentFormData);
-
-        location.href = "./myreservation";
     }
 
     function makeCommentFormData() {

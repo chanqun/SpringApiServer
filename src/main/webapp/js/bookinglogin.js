@@ -19,7 +19,7 @@ Email.prototype = {
     registerEvent() {
         this.emailElement.addEventListener("input", (event) => {
             this.inputValue = event.target.value;
-            console.log(this.inputValue);
+
             if (this.validateEmail()) {
                 this.warningElement.style.display = "none";
             } else {
