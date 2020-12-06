@@ -80,7 +80,7 @@ function makePromotionItem(element) {
         .replace("{content}", element.content)
         .replace("{description}", element.description)
         .replace("{placeName}", element.placeName)
-        .replace("{saveFileName}", element.saveFileName)
+        .replace("{fileId}", element.fileId)
 
     return promotionItem;
 }
@@ -230,7 +230,7 @@ function addProduct(products) {
             .replace("{descriptionText}", element.description)
             .replace("{placeName}", element.placeName)
             .replace("{content}", element.content)
-            .replace("{saveFileName}", element.saveFileName)
+            .replace("{fileId}", element.fileId)
 
         if (isLeft) {
             productLiLeft += productContent;

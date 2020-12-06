@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import kr.or.chan.interceptor.LogInterceptor;
+import kr.or.chan.interceptor.ApiInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -55,6 +55,6 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LogInterceptor()).addPathPatterns("/api/**");
+		registry.addInterceptor(new ApiInterceptor()).addPathPatterns("/api/**");
 	}
 }

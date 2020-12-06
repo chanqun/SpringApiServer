@@ -23,8 +23,8 @@ public class ProductDao {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
-	public Product selectProductById(int id) {
-		Map<String, Object> params = Collections.singletonMap("id", id);
+	public Product selectProductDetailByDisplayInfoId(int displayInfoId) {
+		Map<String, Object> params = Collections.singletonMap("displayInfoId", displayInfoId);
 		return jdbcTemplate.queryForObject(SELECT_PRODUCT_BY_DISPLAY_ID, params, rowMapper);
 	}
 
@@ -45,7 +45,7 @@ public class ProductDao {
 		return jdbcTemplate.query(SELECT_PRODUCT_BY_CATEGORY_ID, params, rowMapper);
 	}
 
-	public Product selectProductDisplayInfoById(int displayInfoId) {
+	public Product selectProductReserveByDisplayInfoId(int displayInfoId) {
 		Map<String, Object> params = Collections.singletonMap("displayInfoId", displayInfoId);
 		return jdbcTemplate.queryForObject(SELECT_PRODUCT_BY_DISPLAYINFO_ID, params, rowMapper);
 	}

@@ -7,6 +7,8 @@ public class ProductImage {
 	private int fileId;
 	private String description;
 	private String saveFileName;
+	private String fileName;
+	private String contentType;
 
 	public int getId() {
 		return id;
@@ -26,6 +28,14 @@ public class ProductImage {
 
 	public String getType() {
 		return type;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public void setType(String type) {
@@ -59,5 +69,13 @@ public class ProductImage {
 	@Override
 	public String toString() {
 		return "ProductImage [id=" + id + ", productId=" + productId + ", type=" + type + ", fileId=" + fileId + "]";
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
 	}
 }

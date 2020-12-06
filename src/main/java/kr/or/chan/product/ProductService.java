@@ -10,8 +10,8 @@ public class ProductService {
 	@Autowired
 	private ProductDao productDao;
 
-	public Product getProductById(int id) {
-		return productDao.selectProductById(id);
+	public Product getProductDetailByDisplayInfoId(int displayInfoId) {
+		return productDao.selectProductDetailByDisplayInfoId(displayInfoId);
 	}
 
 	public List<Product> getAllProduct(int start) {
@@ -22,7 +22,7 @@ public class ProductService {
 		return productDao.selectProductByCategoryId(start, categoryId);
 	}
 
-	public Product getProductDisplayInfoById(int displayInfoId) {
-		return productDao.selectProductDisplayInfoById(displayInfoId);
+	public Product getProductReserveByDisplayInfoId(int displayInfoId) {
+		return productDao.selectProductReserveByDisplayInfoId(displayInfoId);
 	}
 }

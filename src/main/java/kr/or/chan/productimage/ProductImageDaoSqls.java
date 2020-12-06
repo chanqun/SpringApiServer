@@ -14,4 +14,11 @@ public class ProductImageDaoSqls {
 		+ "WHERE product_id = :productId "
 		+ "AND type IN ('th', 'et') "
 		+ "LIMIT 2";
+
+	public static final String SELECT_IMAGE_BY_FILE_ID = ""
+		+ "SELECT file_name"
+		+ "		  , save_file_name"
+		+ "		  , content_type "
+		+ "FROM file_info "
+		+ "WHERE id = :fileId";
 }

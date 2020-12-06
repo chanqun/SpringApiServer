@@ -18,4 +18,8 @@ public class ProductImageService {
 			return null;
 		}
 	}
+
+	public ProductImage getProductImageByFileId(int fileId) {
+		return productImageDao.selectProductImageByFileId(fileId);
+	}
 }

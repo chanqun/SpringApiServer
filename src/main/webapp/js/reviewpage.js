@@ -1,14 +1,15 @@
 window.addEventListener("DOMContentLoaded", function() {
     const productId = getParameterByName("id");
+    const displayInfoId = getParameterByName("display");
     const allCommentRequestNumber = 0;
 
     comment.requestComment(productId, allCommentRequestNumber);
     comment.requestCommentInfo(productId);
 
-    drawProductTitle(productId);
+    drawProductTitle(displayInfoId);
 })
 
-function drawProductTitle(productId) {
+function drawProductTitle(displayInfoId) {
     let httpRequest = new XMLHttpRequest();
 
     httpRequest.addEventListener("load", function() {
@@ -25,6 +26,6 @@ function drawProductTitle(productId) {
         titleAnchor.innerText = titleText;
     })
 
-    httpRequest.open("GET", "./api/products/" + productId, true);
+    httpRequest.open("GET", "./api/products/" + displayInfoId, true);
     httpRequest.send();
 }

@@ -93,7 +93,7 @@
     <script type="rv-template" id="displayImage">
 	    <div class="container_visual" style="width: 414px;">
 		    <ul class="visual_img">
-		        <li class="item" style="width: 414px;"> <img alt="상품이미지" class="img_thumb" src="./api/file?fileName={{saveFileName}}"> <span class="img_bg"></span>
+		        <li class="item" style="width: 414px;"> <img alt="상품이미지" class="img_thumb" src="./api/file?fileId={{fileId}}"> <span class="img_bg"></span>
 		            <div class="preview_txt">
 		                <h2 class="preview_txt_tit">{{description}}</h2> <em class="preview_txt_dsc">₩6,000 ~ </em><em class="preview_txt_dsc">2020.11.17.(화)~2020.12.5.(토), 잔여티켓 2769매</em> </div>
 		        </li>

@@ -6,6 +6,7 @@ public class Product {
 	private int id;
 	private int categoryId;
 	private int productId;
+	private int fileId;
 	private String description;
 	private String content;
 	private LocalDateTime createDate;
@@ -19,7 +20,6 @@ public class Product {
 	private String placeStreet;
 	private String type;
 	private String openingHours;
-	private String saveFileName;
 	private String saveFileImageName;
 
 	public String getSaveFileImageName() {
@@ -150,20 +150,20 @@ public class Product {
 		this.event = event;
 	}
 
-	public String getSaveFileName() {
-		return saveFileName;
-	}
-
-	public void setSaveFileName(String saveFileName) {
-		this.saveFileName = saveFileName;
-	}
-
 	public String getOpeningHours() {
 		return openingHours;
 	}
 
 	public void setOpeningHours(String openingHours) {
 		this.openingHours = openingHours;
+	}
+
+	public int getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 package kr.or.chan.controller;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.or.chan.productimage.ProductImage;
+import kr.or.chan.productimage.ProductImageService;
+
 @PropertySource("classpath:application.properties")
 @RestController
 @RequestMapping("/api/file")
 public class FileController {
 	@Value("${spring.datasource.file}")
 	private String FILE_PATH;
+	@Autowired
+	private ProductImageService productImageService;
 
 	@GetMapping
-	public void getImageByFileName(@RequestParam String fileName, HttpServletResponse response) {
-		String saveFileName = FILE_PATH + fileName;
+	public void getImageByFileName(@RequestParam int fileId, HttpServletResponse response) {
+		ProductImage productImage = productImageService.getProductImageByFileId(fileId);
 
-		File imageFile = new File(saveFileName);
-
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + productImage.getFileName() + "\";");
 		response.setHeader("Content-Transfer-Encoding", "binary");
-		response.setHeader("Content-Length", "" + imageFile.length());
 		response.setHeader("Pragma", "no-cache;");
 		response.setHeader("Expires", "-1;");
 
-		try (
-			FileInputStream fis = new FileInputStream(saveFileName);
-			OutputStream out = response.getOutputStream();) {
+		try (FileInputStream fis = new FileInputStream(FILE_PATH + productImage.getSaveFileName()); OutputStream out = response.getOutputStream();) {
 			int readCount = 0;
 			byte[] buffer = new byte[1024];
 

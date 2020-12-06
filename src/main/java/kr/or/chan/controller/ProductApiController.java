@@ -36,9 +36,9 @@ public class ProductApiController {
 		}
 	}
 
-	@GetMapping("/products/{id}")
-	public Product selectProductById(@PathVariable int id) {
-		return productService.getProductById(id);
+	@GetMapping("/products/{displayInfoid}")
+	public Product selectProductDetailByDisplayInfoId(@PathVariable int displayInfoid) {
+		return productService.getProductDetailByDisplayInfoId(displayInfoid);
 	}
 
 	@GetMapping("/productimage/{productId}")
@@ -52,7 +52,7 @@ public class ProductApiController {
 	}
 
 	@GetMapping("/displayinfo/{displayInfoId}")
-	public Product selectProductDisplayInfoById(@PathVariable int displayInfoId) {
-		return productService.getProductDisplayInfoById(displayInfoId);
+	public Product selectProductReserveByDisplayInfoId(@PathVariable int displayInfoId) {
+		return productService.getProductReserveByDisplayInfoId(displayInfoId);
 	}
 }

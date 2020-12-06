@@ -3,10 +3,10 @@ package kr.or.chan.promotion;
 public class Promotion {
 	private int id;
 	private int productId;
+	private int fileId;
 	private String description;
 	private String content;
 	private String placeName;
-	private String saveFileName;
 
 	public int getId() {
 		return id;
@@ -32,14 +32,6 @@ public class Promotion {
 		this.description = description;
 	}
 
-	public String getSaveFileName() {
-		return saveFileName;
-	}
-
-	public void setSaveFileName(String saveFileName) {
-		this.saveFileName = saveFileName;
-	}
-
 	public String getContent() {
 		return content;
 	}
@@ -54,6 +46,14 @@ public class Promotion {
 
 	public void setPlaceName(String placeName) {
 		this.placeName = placeName;
+	}
+
+	public int getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
 	}
 
 	@Override

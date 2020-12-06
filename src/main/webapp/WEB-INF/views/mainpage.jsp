@@ -84,7 +84,7 @@
     </script>
 
 	<script type="rv-template" id="promotionItem">
-        <li class="item" style="background-image: url(./api/file?fileName={saveFileName}">
+        <li class="item" style="background-image: url(./api/file?fileId={fileId}">
             <a href="#">
             <span class="img_btm_border"></span>
             <span class="img_right_border"></span>
@@ -102,7 +102,7 @@
         <li class="item">
             <a href="detail?id={detailId}&display={displayInfoId}" class="item_book">
                 <div class="item_preview">
-                    <img alt="{description}" class="img_thumb" src="./api/file?fileName={saveFileName}">
+                    <img alt="{description}" class="img_thumb" src="./api/file?fileId={fileId}">
                     <span class="img_border"></span>
                 </div>
                 <div class="event_txt">

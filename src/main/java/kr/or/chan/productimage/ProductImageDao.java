@@ -26,4 +26,9 @@ public class ProductImageDao {
 		Map<String, Object> params = Collections.singletonMap("productId", productId);
 		return jdbcTemplate.query(SELECT_IMAGE_BY_ID, params, rowMapper);
 	}
+
+	public ProductImage selectProductImageByFileId(int fileId) {
+		Map<String, Object> params = Collections.singletonMap("fileId", fileId);
+		return jdbcTemplate.queryForObject(SELECT_IMAGE_BY_FILE_ID, params, rowMapper);
+	}
 }
