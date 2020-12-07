@@ -2,9 +2,9 @@ package kr.or.chan.productprice;
 
 public class ProductPrice {
 	private int id;
-	private String priceTypeName;
 	private int price;
 	private double discountRate;
+	private String priceTypeName;
 
 	public int getId() {
 		return id;

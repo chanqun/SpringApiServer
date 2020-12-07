@@ -50,6 +50,25 @@ window.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
+        const ticketJson = makeTicketJson();
+
+        const httpRequest = new XMLHttpRequest();
+
+        httpRequest.open("POST", "./api/reservations");
+        httpRequest.setRequestHeader("Content-Type", "application/json");
+        httpRequest.send(JSON.stringify(ticketJson));
+
+        httpRequest.addEventListener("load", () => {
+            if (!error.alertRequestError(httpRequest.status)) {
+                return;
+            }
+
+            alert("예약이 완료되었습니다.");
+            location.href = "./main";
+        })
+    }
+
+    function makeTicketJson() {
         const ticketPrice = document.querySelectorAll('.qty');
         const price = [];
         ticketPrice.forEach((element) => {
@@ -63,7 +82,7 @@ window.addEventListener("DOMContentLoaded", function() {
             }
         })
 
-        const requestBody = {
+        const ticketJson = {
             displayInfoId: parseInt(bookButton.dataset.displayInfoId),
             price: price,
             productId: parseInt(bookButton.dataset.productId),
@@ -72,20 +91,7 @@ window.addEventListener("DOMContentLoaded", function() {
             reservationTel: document.querySelector('#tel').value
         }
 
-        const httpRequest = new XMLHttpRequest();
-
-        httpRequest.open("POST", "./api/reservations");
-        httpRequest.setRequestHeader("Content-Type", "application/json");
-        httpRequest.send(JSON.stringify(requestBody));
-
-        httpRequest.addEventListener("load", () => {
-            if (!error.alertRequestError(httpRequest.status)) {
-                return;
-            }
-
-            alert("예약이 완료되었습니다.");
-            location.href = "./main";
-        })
+        return ticketJson;
     }
 
     function activateReserveButton() {

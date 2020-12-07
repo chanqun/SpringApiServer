@@ -13,11 +13,7 @@ Tel.prototype = {
             this.inputValue = event.target.value;
             this.activateReserveButton();
 
-            if (this.validateTel()) {
-                this.warningElement.classList.add("warning_msg");
-            } else {
-                this.warningElement.classList.remove("warning_msg");
-            }
+            this.changeTelCss();
         })
     },
 
@@ -25,5 +21,13 @@ Tel.prototype = {
         const telRegExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
 
         return telRegExp.test(this.inputValue);
+    },
+
+    changeTelCss() {
+        if (this.validateTel()) {
+            this.warningElement.classList.add("warning_msg");
+        } else {
+            this.warningElement.classList.remove("warning_msg");
+        }
     }
 }

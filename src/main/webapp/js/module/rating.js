@@ -14,6 +14,7 @@ Rating.prototype = {
             }
 
             const starCount = parseInt(event.target.getAttribute("value"));
+
             this.changeStar(starCount);
             this.changeScore(starCount);
         })

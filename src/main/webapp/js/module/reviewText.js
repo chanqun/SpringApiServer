@@ -8,20 +8,11 @@ export default function ReviewText(reviewWriteAnchor, reviewTextArea, textCountS
 
 ReviewText.prototype = {
     registerEvent() {
-        this.reviewWriteAnchor.addEventListener("click", () => {
-            this.reviewWriteAnchor.style.display = "none";
-            this.reviewTextArea.focus();
-        })
+        this.reviewWriteAnchor.addEventListener("click", this.showReviewTextArea.bind(this));
 
-        this.reviewTextArea.addEventListener("blur", (event) => {
-            if (event.target.textLength === 0) {
-                this.reviewWriteAnchor.style.display = "block";
-            }
-        })
+        this.reviewTextArea.addEventListener("blur", this.hideReviewTextArea.bind(this), event);
 
-        this.reviewTextArea.addEventListener("input", (event) => {
-            this.textCountSpan.innerText = event.target.textLength;
-        })
+        this.reviewTextArea.addEventListener("input", this.changeReviewTextCount.bind(this), event);
     },
 
     validateTextCount() {
@@ -30,5 +21,20 @@ ReviewText.prototype = {
         let maxTextLength = 400;
 
         return (textLength >= minTextLength && textLength <= maxTextLength);
+    },
+
+    changeReviewTextCount(event) {
+        this.textCountSpan.innerText = event.target.textLength;
+    },
+
+    showReviewTextArea() {
+        this.reviewWriteAnchor.style.display = "none";
+        this.reviewTextArea.focus();
+    },
+
+    hideReviewTextArea(event) {
+        if (event.target.textLength === 0) {
+            this.reviewWriteAnchor.style.display = "block";
+        }
     }
 }

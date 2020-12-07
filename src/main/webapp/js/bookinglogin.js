@@ -20,11 +20,7 @@ Email.prototype = {
         this.emailElement.addEventListener("input", (event) => {
             this.inputValue = event.target.value;
 
-            if (this.validateEmail()) {
-                this.warningElement.style.display = "none";
-            } else {
-                this.warningElement.style.display = "block";
-            }
+            this.toggleEmailCss();
         })
     },
 
@@ -32,6 +28,14 @@ Email.prototype = {
         const emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 
         return emailRegExp.test(this.inputValue);
+    },
+
+    toggleEmailCss() {
+        if (this.validateEmail()) {
+            this.warningElement.classList.add("warning_msg");
+        } else {
+            this.warningElement.classList.remove("warning_msg");
+        }
     }
 }
 

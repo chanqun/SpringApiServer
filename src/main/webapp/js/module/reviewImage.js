@@ -10,15 +10,14 @@ ReviewImage.prototype = {
     VALID_IMAGE_TYPE: ["image/jpg", "image/png"],
 
     registerEvent() {
-        this.reviewImageInput.addEventListener("change", (event) => {
-            const reviewImage = event.target.files[0];
-            this.addReviewImage(reviewImage);
-        })
+        this.reviewImageInput.addEventListener("change", this.addReviewImage.bind(this), event);
 
         this.deleteButton.addEventListener("click", this.deleteReviewImage.bind(this));
     },
 
-    addReviewImage(reviewImage) {
+    addReviewImage(event) {
+        const reviewImage = event.target.files[0];
+
         if (reviewImage && !this.VALID_IMAGE_TYPE.includes(reviewImage.type)) {
             alert("확장자가 jpg, png인 사진만 업로드 가능합니다.");
             return;

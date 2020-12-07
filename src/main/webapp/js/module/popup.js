@@ -12,17 +12,11 @@ export default function Popup(container, titleSpan, date, noButton, yesButton, e
 
 Popup.prototype = {
     registerEvents() {
-        this.yesButton.addEventListener("click", () => {
-            this.cancelReservation();
-        })
+        this.yesButton.addEventListener("click", this.cancelReservation.bind(this));
 
-        this.noButton.addEventListener("click", () => {
-            this.closePopup();
-        })
+        this.noButton.addEventListener("click", this.closePopup.bind(this));
 
-        this.exitButton.addEventListener("click", () => {
-            this.closePopup();
-        })
+        this.exitButton.addEventListener("click", this.closePopup.bind(this));
     },
 
     openPopup(reservationId, title, date) {

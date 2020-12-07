@@ -16,11 +16,6 @@ function bindEvent() {
 
     let getMoreProductButton = document.querySelector(".more>.btn");
     getMoreProductButton.addEventListener("click", getMoreProduct);
-
-    let topButton = document.querySelector(".lnk_top_text");
-    topButton.addEventListener("click", function() {
-        window.scrollTo(0, 0);
-    })
 }
 
 function changeCategory(event) {

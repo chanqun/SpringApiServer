@@ -13,11 +13,7 @@ Email.prototype = {
             this.inputValue = event.target.value;
             this.activateReserveButton();
 
-            if (this.validateEmail()) {
-                this.warningElement.classList.add("warning_msg");
-            } else {
-                this.warningElement.classList.remove("warning_msg");
-            }
+            this.toggleEmailCss();
         })
     },
 
@@ -25,5 +21,13 @@ Email.prototype = {
         const emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
 
         return emailRegExp.test(this.inputValue);
+    },
+
+    toggleEmailCss() {
+        if (this.validateEmail()) {
+            this.warningElement.classList.add("warning_msg");
+        } else {
+            this.warningElement.classList.remove("warning_msg");
+        }
     }
 }

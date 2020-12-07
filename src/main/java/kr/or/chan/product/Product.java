@@ -20,15 +20,6 @@ public class Product {
 	private String placeStreet;
 	private String type;
 	private String openingHours;
-	private String saveFileImageName;
-
-	public String getSaveFileImageName() {
-		return saveFileImageName;
-	}
-
-	public void setSaveFileImageName(String saveFileImageName) {
-		this.saveFileImageName = saveFileImageName;
-	}
 
 	public int getProductId() {
 		return productId;

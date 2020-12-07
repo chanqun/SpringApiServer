@@ -10,9 +10,7 @@ export default function Agreement(agreementBtnList, agreementInput, activateRese
 Agreement.prototype = {
     registerEvent() {
         this.agreementBtnList.forEach((element) => {
-            element.addEventListener("click", (event) => {
-                this.toggleAgreement(event);
-            })
+            element.addEventListener("click", this.toggleAgreement.bind(this), event);
         })
 
         this.agreementInput.addEventListener("click", () => {

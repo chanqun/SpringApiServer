@@ -94,4 +94,9 @@ public class ChanController {
 			return "bookinglogin";
 		}
 	}
+
+	@GetMapping("error")
+	public String error() {
+		return "error";
+	}
 }

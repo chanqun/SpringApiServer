@@ -63,7 +63,8 @@
                     <div class="section_booking_agreement">
                         <div class="agreement all"> <input type="checkbox" id="chk3" class="chk_agree"> <label for="chk3" class="label chk_txt_label"> <span>이용자 약관 전체동의</span> </label>
                             <div class="agreement_nessasary">
-                                <span>필수동의</span> </div>
+                                <span>필수동의</span> 
+                            </div>
                         </div>
                         <!-- [D] 약관 보기 클릭 시 agreement에 open 클래스 추가 -->
                         <div class="agreement terms"> <span class="chk_txt_span"> <i class="spr_book ico_arr_ipc2"></i> <span>개인정보 수집 및 이용 동의</span> </span>

@@ -1,10 +1,13 @@
 package kr.or.chan.controller;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -22,11 +25,12 @@ import kr.or.chan.productimage.ProductImageService;
 public class FileController {
 	@Value("${spring.datasource.file}")
 	private String FILE_PATH;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	private ProductImageService productImageService;
 
 	@GetMapping
-	public void getImageByFileName(@RequestParam int fileId, HttpServletResponse response) {
+	public void getImageByFileId(@RequestParam int fileId, HttpServletResponse response) {
 		ProductImage productImage = productImageService.getProductImageByFileId(fileId);
 
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + productImage.getFileName() + "\";");
@@ -41,8 +45,8 @@ public class FileController {
 			while ((readCount = fis.read(buffer)) != -1) {
 				out.write(buffer, 0, readCount);
 			}
-		} catch (Exception ex) {
-			throw new RuntimeException("file Save Error");
+		} catch (IOException ex) {
+			logger.warn("Excption [getImageByFileId] fileId : {}", fileId, ex);
 		}
 	}
 }
