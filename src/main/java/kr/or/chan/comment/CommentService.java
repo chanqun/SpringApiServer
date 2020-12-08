@@ -76,7 +76,7 @@ public class CommentService {
 
 			return commentDao.insertCommentImage(comment);
 		} catch (IOException ex) {
-			logger.warn("Excption [addCommentImage] fileName : {}", fileName, ex);
+			logger.error("Excption [addCommentImage] fileName : {}", fileName, ex);
 			return null;
 		}
 	}

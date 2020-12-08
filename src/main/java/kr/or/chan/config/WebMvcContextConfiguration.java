@@ -14,18 +14,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import kr.or.chan.interceptor.ApiInterceptor;
+import kr.or.chan.interceptor.LoginInterceptor;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"kr.or.chan.controller"})
 public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	private static final int TEN_MEGABYTE = 1024 * 1024 * 10;
+	private static final int SEVEN_DAYS = 604800;
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(31556926);
-		registry.addResourceHandler("/img/**").addResourceLocations("/img/").setCachePeriod(31556926);
-		registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(31556926);
+		registry.addResourceHandler("/css/**").addResourceLocations("/css/").setCachePeriod(SEVEN_DAYS);
+		registry.addResourceHandler("/img/**").addResourceLocations("/img/").setCachePeriod(SEVEN_DAYS);
+		registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(SEVEN_DAYS);
 	}
 
 	@Override
@@ -56,5 +58,6 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new ApiInterceptor()).addPathPatterns("/api/**");
+		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/myreservation/**");
 	}
 }

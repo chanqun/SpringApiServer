@@ -2,7 +2,6 @@ package kr.or.chan.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
@@ -52,47 +51,29 @@ public class ChanController {
 		return "reserve";
 	}
 
-	@GetMapping("myreservation")
-	public String myreservation(@SessionAttribute(name = "email", required = false) String userEmail, HttpSession session, Model model) {
-		if (Objects.isNull(userEmail)) {
-			return "bookinglogin";
-		} else {
-			List<ReservationResponse> reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
-			model.addAttribute("reservationList", reservationResponseList);
-
-			LocalDateTime currentDateTime = LocalDateTime.now();
-			model.addAttribute("currentDateTime", currentDateTime);
-
-			return "myreservation";
-		}
+	@GetMapping("login")
+	public String login() {
+		return "bookinglogin";
 	}
 
-	@PostMapping("myreservation")
-	public String myreservationPost(@SessionAttribute(name = "email", required = false) String userEmail, @RequestParam(name = "reserve_email", required = false) String reservationEmail, HttpSession session, Model model) {
-		List<ReservationResponse> reservationResponseList = null;
-		if (Objects.nonNull(userEmail)) {
-			reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
-			model.addAttribute("reservationList", reservationResponseList);
+	@PostMapping("login")
+	public String loginPost(@RequestParam(name = "reserve_email", required = false) String reservationEmail, HttpSession session, Model model) {
+		return myreservation(reservationEmail, session, model);
+	}
 
-			LocalDateTime currentDateTime = LocalDateTime.now();
-			model.addAttribute("currentDateTime", currentDateTime);
+	@GetMapping("myreservation")
+	public String myreservation(@SessionAttribute(name = "email", required = false) String userEmail, HttpSession session, Model model) {
+		List<ReservationResponse> reservationResponseList = reservationService.getAllReservationByEmail(userEmail);
+		model.addAttribute("reservationList", reservationResponseList);
 
-			return "myreservation";
-		} else if (Objects.nonNull(reservationEmail) && !reservationEmail.trim().equals("")) {
-			reservationResponseList = reservationService.getAllReservationByEmail(reservationEmail);
-			model.addAttribute("reservationList", reservationResponseList);
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		model.addAttribute("currentDateTime", currentDateTime);
 
-			if (reservationResponseList.size() > 0) {
-				session.setAttribute("email", reservationEmail);
-			}
-
-			LocalDateTime currentDateTime = LocalDateTime.now();
-			model.addAttribute("currentDateTime", currentDateTime);
-
-			return "myreservation";
-		} else {
-			return "bookinglogin";
+		if (reservationResponseList.size() > 0) {
+			session.setAttribute("email", userEmail);
 		}
+
+		return "myreservation";
 	}
 
 	@GetMapping("error")

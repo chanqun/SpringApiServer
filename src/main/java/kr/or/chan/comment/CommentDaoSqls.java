@@ -15,7 +15,7 @@ public class CommentDaoSqls {
 		+ "LEFT JOIN reservation_user_comment_image ON reservation_user_comment_image.reservation_user_comment_id = reservation_user_comment.id "
 		+ "WHERE reservation_user_comment.product_id = :productId";
 
-	public static final String GET_COUNT_AND_AVG_SCORE = ""
+	public static final String SELECT_COUNT_AND_AVG_SCORE = ""
 		+ "SELECT count(*) total_count"
 		+ " 	, ROUND(COALESCE(avg(score), 0), 1) average "
 		+ "FROM reservation_user_comment "

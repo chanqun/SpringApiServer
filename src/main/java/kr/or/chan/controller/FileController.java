@@ -46,7 +46,7 @@ public class FileController {
 				out.write(buffer, 0, readCount);
 			}
 		} catch (IOException ex) {
-			logger.warn("Excption [getImageByFileId] fileId : {}", fileId, ex);
+			logger.error("Excption [getImageByFileId] fileId : {}", fileId, ex);
 		}
 	}
 }
