@@ -11,7 +11,6 @@ drop table if exists product;
 drop table if exists file_info;
 drop table if exists category;
 
-
 -- -----------------------------------------------------
 -- Table `category`
 -- -----------------------------------------------------
