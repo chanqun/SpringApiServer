@@ -4,6 +4,7 @@ insert into category values (3, '콘서트');
 insert into category values (4, '클래식');
 insert into category values (5, '연극');
 
+
 insert into file_info (id, file_name, save_file_name, content_type, delete_flag, create_date, modify_date ) values ( 1,'1_map_1.png', 'img_map/1_map_1.png', 'image/png', 0, now(), now());
 insert into file_info (id, file_name, save_file_name, content_type, delete_flag, create_date, modify_date ) values ( 2,'2_map_2.png', 'img_map/2_map_2.png', 'image/png', 0, now(), now());
 insert into file_info (id, file_name, save_file_name, content_type, delete_flag, create_date, modify_date ) values ( 3,'3_map_3.png', 'img_map/3_map_3.png', 'image/png', 0, now(), now());
