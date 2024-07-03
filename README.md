@@ -1,7 +1,5 @@
 # SpringApiServer
-엔테크 서비스 인턴 프로젝트
-
-naver 예약 시스템 개발
+엔테크 서비스 인턴 프로젝트 (예약 시스템 개발)
 
 <center><img src="./src/main/webapp/img/main.png" width="200" height="600"></center>
 
